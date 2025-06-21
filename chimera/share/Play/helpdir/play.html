@@ -1,0 +1,181 @@
+<html><head>
+<title>play</title>
+<style type="text/css">
+A.nounder:link {text-decoration: none}
+A.nounder:visited {text-decoration: none}
+A.nounder:active {text-decoration: none}
+A.nounder:hover {text-decoration: underline; color: red;}
+</style>
+</head><body>
+<font size="-1">
+<a href="../../chimera/helpdir/UsersGuide/framecommand.html" target="_top">Chimera Commands Index</a>
+</font>
+<a name="top"></a>
+<h3><a href="../../chimera/helpdir/UsersGuide/midas/usageconventions.html">Usage</a>:
+<BR><b>play</b> <i>operation</i> <i>arguments</i></h3>
+<p>
+The <b>play</b> command performs complex motions for creating animations.
+The <i>operation</i> can be:
+<ul>
+<li><a href="#radial"><b>radial</b></a> - move multiscale chain surfaces radially.
+<li><a href="#wave"><b>wave</b></a> - move multiscale chain surfaces from an initial to final state.
+<li><a href="#wiggle"><b>wiggle</b></a> - wiggle branches of a molecule.
+<li><a href="#zipper"><b>zipper</b></a> - move residues from an initial to final state sequentially.
+</ul>
+
+<table align=right>
+<tr><td><a href="http://www.cgl.ucsf.edu/chimera/data/movie-howto-mar2012/movie_examples.html#playradial"><img src="radial.jpg"></a>
+<tr><td align=center><a href="http://www.cgl.ucsf.edu/chimera/data/movie-howto-mar2012/movie_examples.html#playradial">Example animation</a>
+</table>
+
+<p>
+Operation keywords and their sub-keywords described below
+can be truncated to unique strings, and their case does not matter.
+Synonyms for true: True, 1.  Synonyms for false: False, 0.
+A vertical bar "|" designates mutually exclusive options,
+and default settings are indicated with <b>bold</b>.
+</p>
+
+<a href="#top" class="nounder">&bull;</a>
+  <a name="radial"><b>play radial</b></a> &nbsp;<i>surfaces</i>&nbsp;
+  [&nbsp;[<b>factor</b>]&nbsp;<i>f</i>&nbsp;]
+  [&nbsp;[<b>frames</b>]&nbsp;<i>N</i>&nbsp;]
+<br>
+<blockquote>
+Move multiscale chain surfaces radially from the center of all surfaces.
+The center of each chain surface moves radially from the common center
+for a total expansion by the specified factor over N frames.  Examples
+of surface specifiers: #0, #1:1-30, #2:.A,.C, #3:.A-H, #4:31-60.S-V
+This command was developed to peel off outer layers of proteins from
+virus capsid models.
+</blockquote>
+
+<a href="#top" class="nounder">&bull;</a>
+  <a name="wave"><b>play wave</b></a> &nbsp;<i>model1</i>&nbsp;
+ &nbsp;<i>model2</i>&nbsp;  &nbsp;<i>distanceStep</i>&nbsp;
+  [&nbsp;[<b>frames</b>]&nbsp;<i>N</i>&nbsp;]
+  [&nbsp;<b>pairChains</b>&nbsp;<i>p</i>&nbsp;]
+  [&nbsp;<b>groupChains</b>&nbsp;<i>g</i>&nbsp;]
+  [&nbsp;<b>equivalentChains</b>&nbsp;<i>s</i>&nbsp;]
+  [&nbsp;<b>pairingMethod</b>&nbsp;<b>match</b>|push|pull|pushpull&nbsp;]
+<br>
+
+<table align=right>
+<tr><td><a href="http://www.cgl.ucsf.edu/chimera/data/movie-howto-mar2012/movie_examples.html#playwave"><img src="wave.jpg"></a>
+<tr><td align=center><a href="http://www.cgl.ucsf.edu/chimera/data/movie-howto-mar2012/movie_examples.html#playwave">Example animation</a>
+</table>
+
+<blockquote>
+Moves multiscale chain pieces from an initial position to a final position.
+The motion begins at the first chain and propagates out moving additional
+chains based on their distance from already moved chains.
+The pairings of chains between initial and final states can computed to
+minimize overall motion.  The pairChains option specifies a correspondence
+between initial and final chain identifiers.  For example
+"pairChains A=S,B=T,C=U" identifies chains A,B,C in the intial state
+as matching chains S,T,U in the final state.  If the option is not given
+then the same chain identifiers in the initial and final states are matched.
+The groupChains option allows moving 2 or more chains as a single rigid
+object, for example "groupChains A+D,B+E,C+F" makes chains A and D move as
+a single unit, likewise B and E, also C and F.
+The equivalentChains option lists chains (or groups) in the initial state
+are equivalent to each other for purposes of pairing initial state and
+final state chains.  For example, "equivalentChains A=B=C" says that
+chains A, B, and C are all interchangeable when pairing with final state
+chains.  If chains are grouped then "equivalentChains A+D=B+E=C+F" can
+express the groups that are equivalent for pairing. The pairingMethod option
+specifies an algorithm for how chains of the initial state are paired
+with those of the final state.  The default value "match" matches the
+chain instance numbers, ie chains 1-60 match 1-60 in order.  The "push"
+method matches an initial chain to the nearest final state chain position
+that is not yet paired.  The "pull" method matches each final state chain
+to the nearest initial state chain that has not been paired.  The "pushpull"
+method does first push pairing then pull pairing in each layer of chains
+where each layer consists of chains within distanceStep of the previous layer.
+The push and pull methods can make the last moved chains fly a long
+distance, while the pushpull method avoids this problem.  Paired chains
+must have identical sets of atoms because the motion of the intial state
+to the final state is computed by a minimum RMSD match between corresponding
+atom positions. This 
+command was developed for showing the conformational rearrangement of
+dengue virus capsid proteins during virus maturation.
+</blockquote>
+
+<a href="#top" class="nounder">&bull;</a>
+  <a name="wiggle"><b>play wiggle</b></a> &nbsp;<i>atoms</i>&nbsp;
+  &nbsp;<b>branches</b>&nbsp;<i>b</i>&nbsp;
+  [&nbsp;[<b>frames</b>]&nbsp;<i>N</i>&nbsp;]
+  [&nbsp;<b>angle</b>&nbsp;<i>a</i>&nbsp;]
+  [&nbsp;<b>speed</b>&nbsp;<i>s</i>&nbsp;]
+<br>
+
+<table align=right>
+<tr><td><a href="http://www.cgl.ucsf.edu/chimera/data/movie-howto-mar2012/movie_examples.html#wiggle"><img src="wiggle.jpg"></a>
+<tr><td align=center><a href="http://www.cgl.ucsf.edu/chimera/data/movie-howto-mar2012/movie_examples.html#wiggle">Example animation</a>
+</table>
+
+<blockquote>
+Wiggle branches of a molecule back and forth where a branch is a contiguous
+range of residues.  Each branch is rotated about an axis defined by two
+end atoms.  One end atoms comes from a residue at each end of the contiguous
+sequence defining the branch and has a bond to the next residue outside the
+range of the branch.  The rotation angle from the original position varies
+sinusoidally with time.  The speed of motion of a branch is inversely
+proportional to the number of atoms in the branch.  The atoms argument
+is the set in which the branches are defined while the branches argument
+is a comma-separated list of residue ranges, each range defining defining
+a branch, for example, "branches 35-85,53-65,121-290".  Then angle option
+specifies the maximum rotation in degrees (default 10).  The speed option
+(default 25) controls the speed of rotation, one wiggle oscillation taking
+a number of frames equal to the number atoms in the branch divided by the speed.
+The cycle time for a branch is adjust to the nearest value that makes a
+half-integral number of cycles complete in the specified frames, so that
+after the wiggle ends all atoms are in their original positions.  The
+frames argument is the number of frames the motion is carried out over.
+This command was developed to
+<a href="http://youtu.be/i-__ufO9LYg">illustrate flexibility</a>
+of the 9000 nucleotide HIV RNA genome.
+</blockquote>
+
+<a href="#top" class="nounder">&bull;</a>
+  <a name="zipper"><b>play zipper</b></a>  &nbsp;<i>residueList1</i>&nbsp;
+  &nbsp;<i>residueList2</i>&nbsp;
+  [&nbsp;[<b>spacing</b>]&nbsp;<i>d</i>&nbsp;]
+  [&nbsp;[<b>step</b>]&nbsp;<i>s</i>&nbsp;]
+<br>
+
+<table align=right>
+<tr><td><a href="http://www.cgl.ucsf.edu/chimera/data/movie-howto-mar2012/movie_examples.html#zip"><img src="zipper.jpg"></a>
+<tr><td align=center><a href="http://www.cgl.ucsf.edu/chimera/data/movie-howto-mar2012/movie_examples.html#zip">Example animation</a>
+</table>
+
+<blockquote>
+This command linearly intepolates the atom positions from an initial state
+to a final state starting at one end of a chain of residues and progress
+over time to the other end.  It moves the initial state to the final state
+like the action of closing a zipper.  Each residue list must belong to
+one molecule and the lists must have the same number of residues.  The
+residues will be paired in the order they are specified.  The residue
+numbers need not match.  Residues in list one are moved.  The atoms of
+a residue in the first list are paired with the atoms of the corresponding
+residue in the second list by matching atom names.  Unpaired atoms are not
+moved. If f represents
+the fraction for interpolating residue atoms with f = 0 being the initial
+state and f = 1 being the final state then f varies with residue number
+as a piecewise linear function, f = 1 for initial residues, then a linear
+ramp down to 0, then f = 0 for final residues in the chain.  The linear
+ramp is progressively moved from start to end of the chain, animating the
+change.  The width of the linear ramp is proportional to the distance between
+residue centers at the start of the ramp in the two states, that distance
+being divided by the spacing parameter (default 3) to obtain the width
+in number of residues.  Each frame the ramp advances by a number of residues
+equal to the step parameter (default 1).  The step can be non-integer, for
+example 0.1 for a slower motion.  Negative step values make the motion
+begin at the last residue and proceed to the first.
+This was originally used in an
+<a href="http://youtu.be/i-__ufO9LYg">HIV RNA movie</a>
+to show RNA being synthesized from a DNA template.
+</blockquote>
+
+</body>
+</html>

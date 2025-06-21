@@ -1,0 +1,139 @@
+<html>
+<head>
+<title>Source Code for UCSF Chimera</title>
+<link rel="icon" href="/chimera/images/chimera16.png" type="image/png">
+<link rel="stylesheet" href="/css/cgl.css" type="text/css">
+<link rel="stylesheet" href="/css/chimera.css" type="text/css">
+</head>
+<body bgcolor="#ffffff" link="#154c5c" alink="#7f1066" vlink="#7f1066">
+
+
+<!-- Top menu -->
+<div style="margin-bottom: 110px;">
+	<img src="/images/Top.png" style="position: absolute; left: 10px; top: 10px; right: 10px;" height="86" width="95%">
+	<a href="/index.html"><img border="0" src="/images/DNALogo1.png" style="position: absolute; left: 10px; top: 10px;"></a>
+	<img src="/images/TopHighlightNew.png" style="position: absolute; top: 10px; right: 10px;">
+
+	<a href="/index.html" class="top-line" style="right: 320px;">home</a>
+	<a href="/Overview/index.html" class="top-line" style="right: 228px;">overview</a>
+	<a href="/Research/index.html" class="top-line" style="right: 132px;">research</a>
+	<a href="/Resources/index.html" class="top-line" style="right: 42px;">resources</a>
+
+	<span class="second-line-shadow" style="right: 248px;">outreach &amp; training</span>
+
+	<a href="/Outreach/index.html" class="second-line" style="right: 249px;">outreach &amp; training</a>
+	<span class="second-line-shadow" style="right: 110px;">visitors center</span>
+	<a href="/Visitors/index.html" class="second-line" style="right: 111px;">visitors center</a>
+	<span class="second-line-shadow" style="right: 30px;">search</span>
+	<a href="/Search/index.html" class="second-line" style="right: 31px;">search</a>
+</div>
+
+<img src="/chimera/docs/titleChimera.png" width="370" height="55">
+
+<blockquote>
+<h2>Source Code for UCSF Chimera</h2>
+
+<p>
+A gzipped tar archive of the Chimera source code as of September 29th, 2022 is available for <a href="/chimera/data/chimera.src.tar.gz">download</a> (1.2GB).
+</p>
+
+<p>
+Compiling Chimera requires building over 40 third-party packages and is
+not recommended.  See below for the problems you will face.
+</p>
+
+<h2>
+Python Code
+</h2>
+
+<p>
+Most of Chimera is written in Python and that code is included in all
+distributions in
+</p>
+
+<pre>
+	chimera/share
+</pre>
+
+<p>
+or on Mac computers in
+</p>
+
+<pre>
+	Chimera.app/Contents/Resources/share
+</pre>
+
+<p>
+(On Mac OS 10.5 or later ctrl-click on the Chimera icon and choose Show Package Contents
+to see the folders inside Chimera.app.)
+</p>
+
+<h2>
+C++ Header Files
+</h2>
+
+<p>
+The Chimera C++ header files are included in Chimera distributions in
+</p>
+
+<pre>
+	chimera/include
+</pre>
+
+<h2>
+Uses of the Source Code
+</h2>
+
+<p>
+The links on this page provide software developers interested in
+writing extensions to Chimera with access to all of the UCSF-developed
+Chimera source code.  This allows extension writers to see exactly how
+Chimera works.  Note that most of Chimera (~85%) is written
+in Python, and the Python source is automatically included with every
+Chimera distribution (see subdirectories of chimera/share or, on OS X
+systems, Chimera.app/Contents/Resources/share).  This makes it easy for
+the vast majority of developers to write their own extensions.
+</p>
+
+<p>
+Note that it's not possible to re-compile a fully functional Chimera
+from the source code distributed here because we do not include the
+proprietary solvent-accessible molecular surfacing library,
+<a href="http://mgltools.scripps.edu/packages/MSMS" target="_blank">MSMS</a>,
+developed by Michel Sanner and licensed separately by Scripps Research
+Institute.  In addition, creating a full build-from-source copy of
+Chimera is challenging and depends on getting a bunch of things in
+the build environment set up just right for your particular platform.
+We do not have any documentation describing the details of our build
+environment or procedures we use; sorry, but this would require too much
+time and be of benefit to too few to make it worthwhile for us to do.
+</p>
+
+<p>
+The distributions below with "headers" in the name contain the C++ and
+C header files for Chimera and third party packages used to build
+Chimera.  The Python header file pyconfig.h depends on the operating
+system while all others are the same for all operating systems.
+<b>Note that header files are now included with all Chimera distributions.</b>
+Headers are in the <i>include</i> directory of the distribution.
+The distributions with "source" in the name include both the
+Python and C++ Chimera source code.  The distributions with
+"foreign" in the name consist of approximately <a
+href="/chimera/docs/embedded.html">40 third party packages</a> used by
+Chimera.  You will probably not need these foreign packages to
+understand how Chimera works.
+</p>
+
+<p>
+Chimera source code is covered by the same
+<a href="/chimera/docs/licensing.html">license agreement</a>
+as our Chimera binary distributions.
+</p>
+
+<p>
+Questions about the source code should be sent to the <a href="mailto:chimera-dev@cgl.ucsf.edu">Chimera Developer's</a> mailing list.
+</p>
+
+</blockquote>
+</body>
+</html>

@@ -1,0 +1,50 @@
+HEADER    
+TITLE     MDANALYSIS FRAMES FROM 0, STEP 1: Created by PDBWriter
+CRYST1    1.000    1.000    1.000  90.00  90.00  90.00 P 1           1
+REMARK     285 UNITARY VALUES FOR THE UNIT CELL AUTOMATICALLY SET
+REMARK     285 BY MDANALYSIS PDBWRITER BECAUSE UNIT CELL INFORMATION
+REMARK     285 WAS MISSING.
+REMARK     285 PROTEIN DATA BANK CONVENTIONS REQUIRE THAT
+REMARK     285 CRYST1 RECORD IS INCLUDED, BUT THE VALUES ON
+REMARK     285 THIS RECORD ARE MEANINGLESS.
+MODEL        1
+ATOM      1  N   ASN A  25       7.990  -0.230  -2.670  1.00  0.00      A    N  
+ATOM      2  H   ASN A  25       8.628   0.768  -2.658  1.00  0.00      A    H  
+ATOM      3  CA  ASN A  25       8.300  -1.200  -1.630  1.00  0.00      A    C  
+ATOM      4  HA  ASN A  25       8.832  -2.187  -2.038  1.00  0.00      A    H  
+ATOM      5  C   ASN A  25       7.040  -1.660  -0.890  1.00  0.00      A    C  
+ATOM      6  O   ASN A  25       9.320  -0.630  -0.640  1.00  0.00      A    O  
+ATOM      7  CB  ASN A  25       9.147   0.096   0.289  1.00  0.00      A    C  
+ATOM      8  HB2 ASN A  25       9.851  -1.555  -0.089  1.00  0.00      A    H  
+ATOM      9  HB3 ASN A  25       6.820  -2.840  -0.640  1.00  0.00      A    H  
+ATOM     10  CG  ASN A  25      10.632  -0.174  -1.312  1.00  0.00      A    C  
+ATOM     11  ND2 ASN A  25      11.619   0.138  -0.641  1.00  0.00      A    N  
+ATOM     12 HD21 ASN A  25      10.689  -0.123  -2.649  1.00  0.00      A    H  
+ATOM     13 HD22 ASN A  25      10.999  -1.171  -3.133  1.00  0.00      A    H  
+ATOM     14  OD1 ASN A  25      11.490   0.594  -3.167  1.00  0.00      A    O  
+ATOM     15  N   ARG A  54       7.560   7.950  -4.620  1.00  0.00      A    N  
+ATOM     16  H   ARG A  54       6.551   7.809  -5.225  1.00  0.00      A    H  
+ATOM     17  CA  ARG A  54       7.510   8.820  -3.450  1.00  0.00      A    C  
+ATOM     18  HA  ARG A  54       8.459   9.542  -3.522  1.00  0.00      A    H  
+ATOM     19  C   ARG A  54       7.780   8.030  -2.180  1.00  0.00      A    C  
+ATOM     20  O   ARG A  54       6.160   9.530  -3.360  1.00  0.00      A    O  
+ATOM     21  CB  ARG A  54       6.228  10.311  -2.470  1.00  0.00      A    C  
+ATOM     22  HB2 ARG A  54       5.390   8.636  -3.471  1.00  0.00      A    H  
+ATOM     23  HB3 ARG A  54       7.860   6.820  -2.360  1.00  0.00      A    H  
+ATOM     24  CD  ARG A  54       6.068  10.634  -4.430  1.00  0.00      A    C  
+ATOM     25  HD2 ARG A  54       5.997  10.291  -5.575  1.00  0.00      A    H  
+ATOM     26  HD3 ARG A  54       7.051  11.320  -4.497  1.00  0.00      A    H  
+ATOM     27  CG  ARG A  54       4.836  11.536  -4.293  1.00  0.00      A    C  
+ATOM     28  HG2 ARG A  54       5.279  12.483  -4.890  1.00  0.00      A    H  
+ATOM     29  HG3 ARG A  54       3.791  11.654  -4.872  1.00  0.00      A    H  
+ATOM     30  CZ  ARG A  54       4.712  12.089  -2.933  1.00  0.00      A    C  
+ATOM     31  NE  ARG A  54       3.998  11.431  -2.252  1.00  0.00      A    N  
+ATOM     32  HE  ARG A  54       4.385  13.317  -2.499  1.00  0.00      A    H  
+ATOM     33  NH1 ARG A  54       4.091  14.330  -3.332  1.00  0.00      A    N  
+ATOM     34 HH11 ARG A  54       3.122  14.465  -4.012  1.00  0.00      A    H  
+ATOM     35 HH12 ARG A  54       4.736  15.328  -3.413  1.00  0.00      A    H  
+ATOM     36  NH2 ARG A  54       4.353  13.485  -1.171  1.00  0.00      A    N  
+ATOM     37 HH21 ARG A  54       3.209  13.660  -0.875  1.00  0.00      A    H  
+ATOM     38 HH22 ARG A  54       4.943  14.470  -0.841  1.00  0.00      A    H  
+ENDMDL
+END

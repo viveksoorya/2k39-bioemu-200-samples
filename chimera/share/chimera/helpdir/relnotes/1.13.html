@@ -1,0 +1,143 @@
+<!doctype html public "-//W3C//DTD HTML 4.0//EN">
+<!-- vim: sw=1:
+>>> UCSF Chimera Copyright
+Copyright (c) 2015 Regents of the University of California.
+All rights reserved.  This software provided pursuant to a
+license agreement containing restrictions on its disclosure,
+duplication and use.  This notice must be embedded in or
+attached to all copies, including partial copies, of the
+software or any revisions or derivations thereof.
+<<< UCSF Chimera Copyright
+-->
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <link rel="icon" href="../chimera16.png" type="image/png">
+  <title>UCSF Chimera Version 1.13 Build 41780 Release Notes</title>
+ </head>
+
+ <body>
+  <p>
+  <img src="../titleChimera.png" width="370" height="55" alt="logo">
+  </p>
+
+<font size="-1">
+<a href="http://www.cgl.ucsf.edu/chimera/docs/relnotes.html">Release History</a>
+</font>
+
+  <h2>UCSF Chimera Version 1.13 Release Notes</h2>
+  <ul>
+   <li><a href="#1.13">Version 1.13 build 41780 (2 July 2018)</a></li>
+   <li><a href="#1.13.1">Version 1.13.1 build 41965 (17 November 2018)</a></li>
+  </ul>
+
+
+<a name="1.13"></a>
+  <h3>
+   Changes since the <a href="1.12.html">previous production release (1.12)</a>:
+  </h3>
+
+  <ul>
+   <li><a href="#general">General Changes</a>
+<!--
+   <li><a href="#new_tools">New Tools</a>
+-->
+   <li><a href="#tool_changes">Tool Changes</a>
+<!--
+   <li><a href="#new_commands">New Commands</a>
+-->
+   <li><a href="#command_changes">Command Changes</a>
+   <li><a href="#bug_fixes">Notable Bug Fixes</a>
+   <li><a href="#bugs">Known Bugs</a>
+  </ul>
+
+  <blockquote>
+   <h4><a name="general">General Changes:</a></h4>
+   <ul>
+    <li>updated CASTp fetch URL (1/5/2018)
+    <li>serial-numbering option for saving very large PDB files (4/2/2018)
+   </ul>
+
+   <!--
+   <h4><a name="new_tools">New Tools:</a></h4>
+   <ul>
+
+    <li><b>Toolname</b> (Category) &mdash; 
+    tool feature
+
+    <li><b>Toolname</b> (Category) &mdash;
+    <ul>
+     <li>tool feature
+     <li>tool feature
+    </ul>
+   </ul>
+   -->
+
+   <h4><a name="tool_changes">Tool Changes:</a></h4>
+   <ul>
+    <li><b>Additional Tools</b> menu 
+to facilitate getting third-party plugins, notably the
+<a href="https://github.com/insilichem/tangram" target="_blank">Tangram
+suite</a> of molecular modeling tools from
+<a href="http://www.insilichem.com/" target="_blank">InsiliChem</a>
+(JD Mar&eacute;chal's group, Universitat Aut&ograve;noma de Barcelona)
+(4/17/2018)
+
+    <li><b>Rotamers</b> (Structure Editing) &mdash; Dunbrack 
+    backbone-dependent rotamer library updated to 2010 version (4/26/2018)
+
+   </ul>
+
+   <!--
+   <h4><a name="new_commands">New Commands:</a></h4>
+   <ul>
+    <li><b>command</b> &mdash; description
+   </ul>
+   -->
+
+   <h4><a name="command_changes">Command Changes:</a></h4>
+   <ul>
+    <li><b>swapaa</b> &mdash; Dunbrack backbone-dependent rotamer library 
+    updated to 2010 version (4/26/2018)
+    <li><b>tile</b> &mdash; <b>label</b> option adds 2D labels showing
+    each tiled model's number and name (2/27/2018)
+    <li><b>write</b> &mdash; 
+    serial-numbering option for saving very large PDB files (4/2/2018)
+   </ul>
+
+   <h4><a name="bug_fixes">Notable Bug Fixes:</a></h4>
+   <ul>
+   <li> Modeller input preparation sometimes failed when the template 
+   chain contained a modified amino acid (a HETATM residue)
+   (fixed 2/22/2018)
+   <li> Bogus &quot;file does not exist&quot; dialog no longer appears
+   (fixed 10/31/2017)
+   <li> Fixed MD Simulation's &quot;incompatible files&quot; problem when restarting a trajectory computation
+   (fixed 4/2/2018)
+   </ul>
+
+   <h4><a name="bugs">Known Bugs:</a></h4>
+   <ul>
+    <li><a href="http://www.rbvi.ucsf.edu/chimera/docs/UsersGuide/surfprobs.html">surfaces fail</a> for some structures
+   </ul>
+
+  </blockquote>
+
+   <h3><a name="1.13.1">Changes in release 1.13.1</a> relative to
+    <a href="#1.13">release 1.13</a>:</h3>
+
+   <blockquote>
+   <h4>Notable Bug Fixes:</h4>
+   <ul>
+    <li> Fixed <b>Align Chain Sequences</b> tool
+    <li> Fixed problem with using rotamers of proline from the Dunbrack 2010 rotamer library
+    <li> Support independent rotation in <b>Animation</b> scenes
+    <li> Fixed problem with mis-identified element types in new Amber trajectories
+    <li> H-bond-guided hydrogen addition was wrongly ignoring certain hydrogen bonds when structures were being treated in isolation
+    <li> On Windows, prevent a possible crash when fetching auxiliary Modeller scores
+    <li> Improve macOS Mojave 10.14 appearance
+   </ul>
+   </blockquote>
+
+ </body>
+</html>

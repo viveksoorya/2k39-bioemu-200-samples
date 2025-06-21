@@ -1,0 +1,161 @@
+<!doctype html public "-//W3C//DTD HTML 4.0//EN">
+<!-- vim: sw=1:
+>>> UCSF Chimera Copyright
+Copyright (c) 2015 Regents of the University of California.
+All rights reserved.  This software provided pursuant to a
+license agreement containing restrictions on its disclosure,
+duplication and use.  This notice must be embedded in or
+attached to all copies, including partial copies, of the
+software or any revisions or derivations thereof.
+<<< UCSF Chimera Copyright
+-->
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <link rel="icon" href="../chimera16.png" type="image/png">
+  <title>UCSF Chimera Version 1.17 Release Notes</title>
+ </head>
+
+ <body>
+  <p>
+  <img src="../titleChimera.png" width="370" height="55" alt="logo">
+  </p>
+
+<font size="-1">
+<a href="http://www.cgl.ucsf.edu/chimera/docs/relnotes.html">Release History</a>
+</font>
+
+  <h2>UCSF Chimera Version 1.17 Release Notes</h2>
+  <ul>
+   <li><a href="#1.17">Version 1.17 Build 42440 (13 April 2023)</a></li>
+   <li><a href="#1.17.1">Version 1.17.1 Build 42449 (19 April 2023)</a></li>
+   <li><a href="#1.17.2">Version 1.17.2 Build 42474 (26 June 2023)</a></li>
+   <li><a href="#1.17.3">Version 1.17.3 Build 42480 (6 July 2023)</a></li>
+  </ul>
+
+<a name="1.17"></a>
+  <h3>
+   Changes since the <a href="1.16.html">previous production release (1.16)</a>:
+  </h3>
+
+  <!--
+  <ul>
+   <li><a href="#general">General Changes</a>
+   <li><a href="#new_tools">New Tools</a>
+   <li><a href="#tool_changes">Tool Changes</a>
+   <li><a href="#new_commands">New Commands</a>
+   <li><a href="#command_changes">Command Changes</a>
+   <li><a href="#bug_fixes">Notable Bug Fixes</a>
+   <li><a href="#bugs">Known Bugs</a>
+  </ul>
+  -->
+
+  <blockquote>
+   <h4><a name="general">General Changes:</a></h4>
+   <ul>
+    <li>Due to support soon being impossible for the obsolete Opal web service infrastructure on UCSF RBVI
+	servers, as many services as possible were ported over to use the newer web service infrastructure used
+	by ChimeraX.  The services that were ported were: Blast, Modeller, Clustal Omega, Muscle.  The CCD
+	template fetching service used for connectivity of non-standard residues in mmCIF files was changed to
+	get the templates from the RCSB rather than RBVI servers.  Services that were not possible to port were:
+	Anchor Graph, CDK Depiction, MDA BlastP, MultiFit, SAXS/SAXS2.
+   <li>The current Chimera scene can be exported for use in ChimeraX by
+   using the <b>File</b>&rarr;<b>Export Scene</b> menu item and changing the format in the resulting
+   dialog to "ChimeraX".  
+   This will create a Python file (.py suffix) that can be opened in
+   ChimeraX using any of the normal means for opening files
+   (<b>File</b>&rarr;<b>Open</b> menu item; "open" command).
+   </ul>
+
+   <!--
+   <h4><a name="new_tools">New Tools:</a></h4>
+   <ul>
+
+    <li><b>Toolname</b> (Category) &mdash; 
+    tool feature
+
+    <li><b>Toolname</b> (Category) &mdash;
+    <ul>
+     <li>tool feature
+     <li>tool feature
+    </ul>
+   </ul>
+   -->
+
+   <h4><a name="tool_changes">Tool Changes:</a></h4>
+   <ul>
+
+    <li><b>Model Panel</b> (General Controls) &mdash; 
+    The Model Panel now has the same optional show/active next/previous/skip capability that the command
+	line has.  Use the Model Panel's "Configure" button to enable the Skip column and the Next/Previous
+	buttons.
+
+   <!--
+    <li><b>Toolname</b> (Category) &mdash;
+    <ul>
+     <li>tool change
+     <li>tool change
+    </ul>
+   -->
+   </ul>
+
+   <!--
+   <h4><a name="new_commands">New Commands:</a></h4>
+   <ul>
+    <li><b>command</b> &mdash; description
+   </ul>
+   -->
+
+   <!--
+   <h4><a name="command_changes">Command Changes:</a></h4>
+   <ul>
+    <li><b>command</b> &mdash; description
+   </ul>
+   -->
+
+   <h4><a name="bug_fixes">Notable Bug Fixes:</a></h4>
+   <ul>
+    <li>UniProt fetching working again (UniProt web site API changed)
+   </ul>
+
+   <h4><a name="bugs">Known Bugs:</a></h4>
+   <ul>
+    <li><a href="http://www.rbvi.ucsf.edu/chimera/docs/UsersGuide/surfprobs.html">surfaces fail</a> for some structures
+   </ul>
+
+  </blockquote>
+
+   <h3><a name="1.17.1">Changes in release 1.17.1</a> relative to
+    <a href="#1.17">release 1.17</a>:</h3>
+
+   <blockquote>
+   <h4>Notable Bug Fixes:</h4>
+   <ul>
+    <li> Fixed web services on Windows and Linux, which includes the <b>Blast Protein</b> tool,
+               and/or running Modeller or the Clusta Omega / MUSCLE realignment programs from the
+               <b>Multalign Viewer</b> tool.
+   </ul>
+   </blockquote>
+
+   <h3><a name="1.17.2">Changes in release 1.17.2</a> relative to
+    <a href="#1.17.1">release 1.17.1</a>:</h3>
+
+   <blockquote>
+   <h4>Notable Bug Fixes:</h4>
+   <ul>
+    <li> The <b>Solvate</b> / <b>Add Ions</b> / <b>Write Prmtop</b> tools now work on Windows installations where the installation path has spaces in it.
+   </ul>
+   </blockquote>
+
+   <h3><a name="1.17.3">Changes in release 1.17.3</a> relative to
+    <a href="#1.17.2">release 1.17.2</a>:</h3>
+
+   <blockquote>
+   <h4>Notable Bug Fixes:</h4>
+   <ul>
+    <li> The FFmpeg program for encoding movies was inadvertently missing.
+   </ul>
+   </blockquote>
+
+ </body>
+</html>

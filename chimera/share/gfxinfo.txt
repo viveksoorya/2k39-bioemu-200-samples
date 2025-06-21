@@ -1,0 +1,287 @@
+# vim: set sw=4:
+# This file contains extra information about various hardware configurations
+# based on the OpenGL getString (glGetString(3)) vendor, renderer, version,
+# and extension strings.  "Extra information" means information about the
+# graphics hardware that can't be easily determined by software.  Some
+# performance related information may creep in here, but that should be
+# determined by an analysis program.
+#
+# This file is read sequentially, later sections override earlier sections,
+# so the information for particular platforms should be later in the file.
+# The sections of this file that match the current platform give extra
+# information about that platform.  An unspecified field matches any value.
+# When the vendor field is encountered, all other fields are reset to
+# unspecified.
+#
+# Control options:
+#	These options control if the configuration options below apply to
+#	the current hardware.  Expressions are POSIX extended regular
+#	expressions -- special characters are ^.[]$()|*+?{}\ -- e.g. ()
+#	for grouping, [] for classes -- see regex(7).
+#
+#	VENDOR expression
+#		Match expression against vendor string.
+#
+#	RENDERER expression
+#		Match expression against renderer string.
+#
+#	VERSION expression
+#		Match expression against version string.
+#
+#	EXTENSION expression
+#		Match expression against extension string.
+#
+#	OS expression
+#		Match expression against local os release string (the output
+#		from "uname -r" on most Posix systems, -R on SGI systems).
+#		Caveat: this only works if running chimera locally, use
+#		VERSION instead if at all possible.
+#
+#	The effect of the above control options are nested.
+#
+# The configuration options are (with the default value):
+#
+#	debug [0|1|2]
+#		If non-zero, turn on informational messages about the
+#		parsing of this file.  Level 2 gives more information.
+#
+#	message text
+#		Output text to standard error stream.
+#
+#	fatal text
+#		Throw a runtime exception with the given text.
+#
+#
+#	disable feature-name
+#		Disable named OpenGL feature.  See below.
+#
+#	enable feature-name
+#		Reenable named OpenGL feature.  See below.
+#		details.
+#
+#	pedanticAALines 0.0
+#		This option is for platforms that output absolutely correct
+#		anti-aliased lines with low alpha values for edge pixels.  A
+#		positive value filters out edge pixels whose alpha is less
+#		than or equal the given value.  A zero value disables this
+#		correction.
+#
+#	badStereoBoolean
+#		If 1, then glGetBooleanv(GL_STEREO) always returns
+#		false, so use GLX 1.3 calls to figure out if current
+#		visual supports stereo.  SGI only.
+#
+# Feature names can either be names of OpenGL extensions or other
+# OpenGL features that we have found driver bugs for.
+#
+#	Standard extensions in OpenGL 1.1:
+#			VertexArray
+#
+#	Standard extensions in OpenGL 1.2:
+#			TextureEdgeClamp, Texture3D,
+#			SeparateSpecularColor, DrawRangeElements
+#
+#	Standard extensions in OpenGL 1.3:
+#			Multisample, Multitexture, CubeMap
+#
+#	Standard extensions in OpenGL 1.4:
+#			PointParameters, BlendEquation, BlendFuncSeparate,
+#			WindowPos, Shadows
+#
+#	Standard extensions in OpenGL 1.5:
+#			VertexBufferObject
+#
+#	Standard extensions in OpenGL 2.0:
+#			Shading
+#
+#	Other extensions we're interested in:
+#			CompiledVertexArray, CullVertex, ColorTable,
+#			TextureColorTable, PalettedTexture
+#
+#	Windowing system features:
+#			ChoosePixelFormat (Windows), FBConfig (X11)
+#
+#	Other features:
+#
+#	TrustNormals
+#		If disabled, always renormalize normals.  Works around
+#		bug with scaling perpendicular to the normal.
+#
+#	AntialiasLines
+#		If disabled, then don't use antialiased lines ever.
+#
+#	AntialiasPoints
+#		If disabled, then don't use antialiased points ever.
+#
+#	TrustColorLogicBlend
+#		If disabled, then enabling/disabling GL_COLOR_LOGIC_OP
+#		screws up alpha blending.
+#
+#	CompileAndExecute
+#		If disabled, then display lists that are created with
+#		GL_COMPILE_AND_EXECUTE are much slower than ones that
+#		are compiled first, then called.
+#
+#	StereoRubberBanding
+#		If disabled, then using glDrawBuffer(GL_FRONT) when in
+#		quad-bufferred stereo only draws in one eye (left).
+#		So rubberbanding doesn't work.
+#
+#	StereoMultisample
+#		If disabled, then multisampling combined with quad-bufferred
+#		stereo doesn't work.
+#
+#	FastMultisampling
+#		If disabled, then using multisampling is very slow (chimera
+#		surface bench is 50X slower or more).  This is typically
+#		only needed for software renderers that support multisampling
+#		or hardware renderers that use main memory.
+#
+#	FBOShadows
+#		If disabled, limit the shadow map size to the size of the
+#		window and copy it to a texture instead of using a
+#		framebuffer object connected directly to a texture.
+
+VENDOR ^NVIDIA Corporation$
+    disable CompileAndExecute
+
+    OS ^Darwin (.*)
+	# Mac 10.9.0, instancing crashes, Chimera bug #12467
+	enable BrokenAttribLocation
+
+    OS ^Darwin (9|10)\.
+	disable FastMultisampling
+
+    OS ^Darwin (.*)
+	disable StereoRubberBanding
+	disable StereoMultisample
+
+    OS ^Darwin (9|10|11)\.
+	# Chimera bug report #11278
+	disable VertexAttribDivisor
+
+    RENDERER ^Quadro NVS 1[12]0M
+	disable FastMultisampling
+	OS ^Microsoft
+	    VERSION 2\.0\.1
+		disable VertexArray
+
+    RENDERER ^NVIDIA GeForce 8600M
+	OS ^Darwin
+	    disable FastMultisampling
+
+    RENDERER ^Quadro FX [358]80[^0-9]
+	disable FastMultisampling
+
+    RENDERER ^Quadro (600|410)[[:>:]]
+	disable FastMultisampling
+
+    RENDERER ^Quadro [0-9][0-9][0-9]M
+	disable FastMultisampling
+
+    RENDERER ^Quadro FX 3700
+	disable StereoMultisample
+
+VENDOR ^ATI Technologies
+    OS ^Darwin (9|10)\.
+	disable FastMultisampling
+
+    RENDERER ATI Radeon 9600 XT OpenGL Engine
+	OS ^Darwin
+	    # antialiased lines in multisampled window look bad
+	    disable FastMultisampling
+
+    RENDERER ATI Radeon X1600 OpenGL Engine
+	OS ^Darwin
+	    # No graphics shown if shaders used. Chimera bug #11487.
+	    disable Shading
+
+    RENDERER ATI Radeon X1900 OpenGL Engine
+	OS ^Darwin
+	    # No graphics is shaders used. Chimera bug #12022
+	    disable Shading
+
+VENDOR ^Intel
+    disable FastMultisampling
+    # vertex buffer problems on 7.14.10.* and 7.15.10.1545
+    # disable VertexBufferObject
+    disable DrawElementsInstanced
+
+    RENDERER ^Intel HD
+	enable VertexBufferObject
+	enable DrawElementsInstanced
+
+        OS ^Darwin
+            # Bug #13480
+            disable Multisample
+
+    RENDERER ^Mesa
+	# Bug #11694, #11695.
+	disable Shading
+
+    RENDERER ^Intel GMA
+	# Bug #11968.
+	disable Shading
+
+    RENDERER ^Intel\(R\) G41
+	# Bug #12027.
+	disable Shading
+
+    RENDERER ^Intel\(R\) HD
+	VERSION 2\.1\.0 - Build 8\.15\.10\.2189
+	    # Bug #12029
+	    disable Shading
+
+VENDOR ^Mesa
+    disable DrawElementsInstanced
+    disable FastMultisampling
+    disable Shading
+
+    VERSION Mesa 6
+	disable FBConfig
+
+    VERSION Mesa 7\.0\.[0-3]
+	# 7.0.4 "Fixed glDrawElement + VBO segfault"
+	# Ubuntu 8.04: 1.4 (2.1 Mesa 7.0.3-rc2)
+	# Ubuntu 8.04 (Mesa DRI Intel): 1.3 Mesa 7.0.3-rc2
+	disable VertexBufferObject
+
+VENDOR ^X.Org
+    disable FastMultisampling
+    disable Shading
+    disable DrawElementsInstanced
+
+VENDOR ^Tungsten
+    disable FastMultisampling
+    disable Shading
+    disable DrawElementsInstanced
+
+VENDOR ^Gallium
+    disable FastMultisampling
+    disable Shading
+    disable DrawElementsInstanced
+
+VENDOR ^nouveau
+    disable FastMultisampling
+    disable Shading
+    disable DrawElementsInstanced
+
+VENDOR ^Microsoft
+    disable FastMultisampling
+    disable Shading
+    disable DrawElementsInstanced
+
+VENDOR ^S3 Graphics
+    disable FastMultisampling
+    disable Shading
+    disable DrawElementsInstanced
+
+VENDOR ^SiS
+    disable FastMultisampling
+    disable Shading
+    disable DrawElementsInstanced
+
+VENDOR ^XGI Technology
+    disable FastMultisampling
+    disable Shading
+    disable DrawElementsInstanced

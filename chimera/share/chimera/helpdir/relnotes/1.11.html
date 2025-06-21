@@ -1,0 +1,272 @@
+<!doctype html public "-//W3C//DTD HTML 4.0//EN">
+<!-- vim: sw=1:
+>>> UCSF Chimera Copyright
+Copyright (c) 2015-2016 Regents of the University of California.
+All rights reserved.  This software provided pursuant to a
+license agreement containing restrictions on its disclosure,
+duplication and use.  This notice must be embedded in or
+attached to all copies, including partial copies, of the
+software or any revisions or derivations thereof.
+<<< UCSF Chimera Copyright
+-->
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <link rel="icon" href="../chimera16.png" type="image/png">
+  <title>UCSF Chimera Version 1.11 Build 41179 Release Notes</title>
+ </head>
+
+ <body>
+  <p>
+  <img src="../titleChimera.png" width="370" height="55" alt="logo">
+  </p>
+
+<font size="-1">
+<a href="http://www.cgl.ucsf.edu/chimera/docs/relnotes.html">Release History</a>
+</font>
+
+  <h2>UCSF Chimera Version 1.11 Release Notes</h2>
+  <ul>
+  <li><a href="#1.11.0">Version 1.11 (build 41179, 14 July 2016)</h2>
+  <li><a href="#1.11.1">Version 1.11.1 (build 41293, 22 September 2016)</h2>
+  <li><a href="#1.11.2">Version 1.11.2 (build 41376, 1 December 2016)</h2>
+  </ul>
+
+<a name="1.11.0"></a>
+  <h3>
+   Changes since the <a href="1.10.html">previous production release (1.10)</a>:
+  </h3>
+
+  <ul>
+   <li><a href="#general">General Changes</a>
+   <li><a href="#new_tools">New Tools</a>
+   <li><a href="#tool_changes">Tool Changes</a>
+   <li><a href="#new_commands">New Commands</a>
+   <li><a href="#command_changes">Command Changes</a>
+   <li><a href="#bug_fixes">Notable Bug Fixes</a>
+   <li><a href="#bugs">Known Bugs</a>
+  </ul>
+
+  <blockquote>
+   <h4><a name="announce">Announcements:</a></h4>
+   <ul>This is the last release for 32-bit operating systems.
+   </ul>
+
+   <h4><a name="general">General Changes:</a></h4>
+   <ul>
+    <li>model-display checkboxes can be shown below the command line,
+    and the model-active checkboxes can be hidden (see
+    <b>Preferences</b>, <b>Command Line</b>) 
+    <li>new input format: IMAGIC density map
+    <li>mouse focus (so that Chimera accepts typed input) can be restored 
+    by clicking into the <b>Side View</b> as well as the main window
+    <li>command-line &ldquo;atomspec&rdquo; expanded to handle
+    surface piece names (such as from <b>Multiscale Models</b>)
+    <li>new <b>flat ribbon</b> publication preset
+    <li>&ldquo;wall-eye stereo pair&rdquo; option added to <b>Save Image</b>
+    dialog 
+    <li>revamped <b>Getting Started</b> tutorials,
+    new <b>Ribbon Styles</b> image tutorial
+    <li>molecule descriptions (shown in the status line on mouseover) 
+     now read from mmCIF, not just PDB
+    <li><b>PubChem</b> fetch changed to get structures from PubChem3D (NCBI)
+     instead of Pub3D (Indiana University)
+    <li>command history navigation skips completely identical lines, and 
+     additionally pressing Shift (along with Ctrl-p, Ctrl-n, &uarr;, or &darr;)
+     goes to the previous/next occurrence of the same command 
+     (same initial string) instead of the immediately adjacent command
+    <li>atom specification tolerates spaces after commas
+    <li>implemented standard keyboard shortcuts Ctrl-o,s,S,q 
+    (on Mac, Command instead of Ctrl) for <b>File</b> menu entries
+   <b>Open</b>, <b>Save Session</b>, <b>Save Session As</b>, and <b>Quit</b>,
+    respectively
+   </ul>
+
+   <h4><a name="new_tools">New Tools:</a></h4>
+   <ul>
+    <li>pre-existing <b>Color Actions</b> dialog now also listed as a tool
+     under Depiction
+    <li><b>Molecular Dynamics Simulation</b> (MD/Ensemble Analysis) &mdash; 
+    interface to setup tools and MMTK molecular dynamics; thanks to 
+    Victor Mu&ntilde;oz Robles and Jean-Didier Mar&eacute;chal 
+    (Universitat Aut&ograve;noma de Barcelona)
+   </ul>
+
+   <h4><a name="tool_changes">Tool Changes:</a></h4>
+   <ul>
+    <li><b>Add Ions</b> (Structure Editing, Amber) &mdash; 
+    many more ion types available
+    <li><b>Axes/Planes/Centroids</b> (Structure Analysis) &mdash; 
+    option to define axes normal to previously defined planes
+    <li><b>MatchMaker</b> (Structure Comparison) &mdash; 
+     if the fit is iterated, now reports RMSD over
+     all pairs as well as the pruned set of pairs
+    <li><b>MD Movie</b> (MD/Ensemble Analysis) &mdash; 
+     residue interaction network (RIN) calculation and display;
+     currently requires starting Chimera from Cytoscape via the
+     <i>structureViz</i> app
+    <li><b>Model Panel</b> (General Controls) &mdash; 
+     select-chains dialog includes chain descriptions from the PDB, if available
+    <li><b>RR Distance Maps</b> (Structure Comparison) &mdash; 
+     <ul>
+     <li>can show distance differences for pairs of structures 
+     (means and standard deviations were previously available)
+     <li>can export data to files as tab- or comma-separated values
+     </ul>
+    <li><b>Segment Map</b> (Volume Data) &mdash; 
+    updated version of Segger
+   </ul>
+
+   <h4><a name="new_commands">New Commands:</a></h4>
+   <ul>
+    <li><b>pipes</b> &mdash; 
+     command-line implementation of <b>PipesAndPlanks</b>
+   </ul>
+
+   <h4><a name="command_changes">Command Changes:</a></h4>
+   <ul>
+    <li><b>clip</b> &mdash; allows placing front/back clipping planes
+    a specified distance from the center of rotation
+    <li><b>coordset</b> &mdash; option to load coordinates for all frames
+    (default true) 
+    <li><b>define</b> &mdash; can define an axis normal to a plane
+    <li><b>shape</b> &mdash; can make a <b>triangle</b>
+    <li><b>matchmaker</b> &mdash; if the fit is iterated, now reports RMSD over
+     all pairs as well as the pruned set of pairs
+    <li><b>mclip</b> &mdash; a per-model clipping plane can be positioned onto
+      a plane object previously defined with <b>Axes/Planes/Centroids</b>
+      or the command <b>define</b>
+    <li><b>molmap</b> &mdash; 
+       <ul>
+       <li>default output model number now unique instead of the same as 
+        the input atoms
+       <li><b>onGrid</b> option to generate map on the grid of another
+       </ul>
+    <li><b>move</b> &mdash; <b>move cofr</b> to translate models to the
+      current center of rotation
+    <li><b>set</b> &mdash; 
+       <ul>
+       <li><b>showCofR</b> to show &ldquo;+&rdquo; crosshairs 
+       at the center of rotation
+       <li><b>eyeSeparation</b> for stereo
+       <li><b>screenDistance</b> for stereo
+       <li><b>screenWidth</b> for stereo
+       </ul>
+    <li><b>sop</b> &mdash; 
+       <ul>
+       <li><b>colorCopy</b> to copy colors from one
+        surface piece to other pieces, or from N to N pieces
+       <li><b>invertShown</b> to show hidden blobs and hide shown blobs
+        (can show previously hidden &ldquo;dust&rdquo; for masking purposes)
+       </ul>
+    <li><b>turn</b>, <b>rock</b>, <b>roll</b> &mdash;
+      can use an axis previously defined with <b>Axes/Planes/Centroids</b> 
+      (or <b>define</b>) as the axis of rotation
+    <li><b>vina</b> &mdash; 
+       <ul>
+       <li><b>prep</b> option to run prep only, not docking
+       <li><b>wait</b> option to prevent premature exit from Chimera nogui
+       </ul>
+    <li><b>volume</b> &mdash; 
+       <ul>
+       <li><b>rmsLevel</b> for specifying threshold (contour level)
+       in root-mean-square deviations from zero
+       <li><b>sdLevel</b> for specifying threshold
+       in standard deviations from the mean
+       </ul>
+    <li><b>vop</b> &mdash; 
+       <ul>
+       <li><b>vop boxes</b> cube length can be specified in grid units
+         with the <b>isize</b> option; this facilitates getting cubes 
+         of exactly the same size
+       <li>map sharpening implemented as 
+         <b>invert</b> option to <b>vop gaussian</b> 
+       <li><b>vop new</b> to create empty (zero-valued) map
+       </ul>
+   </ul>
+
+   <h4><a name="bug_fixes">Notable Bug Fixes:</a></h4>
+   <ul>
+   <li>MultiDomain Assembler (<b>mda</b> command) 
+     <ul>
+     <li>works with sequence file input
+     <li>residue attributes <b>mda_blastscore</b>, <b>mda_percentid</b>, 
+      <b>mda_alignment</b> saved in sessions
+     </ul>
+   <li><b>reset</b> command works with position names containing spaces,
+    providing the names are enclosed in quotation marks
+   <li>molecule descriptions (shown in the status line on mouseover) 
+    saved in sessions
+   <li><b>PDB2PQR</b> link to web service updated to 2.0.0
+    (1.9.0 no longer available)
+   <li>Adding charges to non-standard residues would sometimes fail, 
+   complaining about not finding libquadmath
+   <li>fewer triangles in STL output for atom/bond representations
+   </ul>
+
+   <h4><a name="bugs">Known Bugs:</a></h4>
+   <ul>
+    <li><a href="http://www.rbvi.ucsf.edu/chimera/docs/UsersGuide/surfprobs.html">surfaces fail</a> for some structures
+   </ul>
+
+  </blockquote>
+
+<hr>
+
+   <h3><a name="1.11.1">Changes in release 1.11.1</a> relative to
+    <a href="#1.11.0">release 1.11</a>:</h3>
+
+  <blockquote>
+   <h4>Notable Bug Fixes:</h4>
+   <ul>
+    <li> backport Tk bug fix for Mac OS X dual display crash
+    <li> speed up opening of large non-molecule structures with no bonds
+    <li> suppress excessive warnings when opening PDB files
+    <li> make sure output goes to right place when opening mmCIF files
+    <li> NCBI URLs have to use https now
+    <li> <b>rainbow helix</b> recognizes abutting helices as distinct
+    <li> fix <b>Join Models</b> tab in <b>Build Structure</b> 
+     so the setting of the phi angle never moves the "non-moving" side
+    <li> fix ion parameter in <b>APBS</b>
+    <li> handle plots with closed models more gracefully in <b>RRDistMaps</b>
+   </ul>
+   <h4>Enhancements:</h4>
+    <ul>
+    <li> User's Guide includes attribute assignment file for 
+      Moon-Fleming hydrophobicity scale
+    <li> put Chimera version in X3D output
+    <li> <b>struts</b> command takes into account the
+     currently displayed pseudobonds (H-bonds, distance monitors)
+     and ignores bonds that are hidden
+    <li> <b>surface</b> command <b>warnLarge false</b> option to
+     bypass having to confirm a large calculation
+    </ul>
+   </blockquote>
+
+   <h3><a name="1.11.2">Changes in release 1.11.2</a> relative to
+    <a href="#1.11.1">release 1.11.1</a>:</h3>
+
+   <blockquote>
+   <h4>Notable Bug Fixes:</h4>
+   <ul>
+    <li> works with changes in NCBI Blast and associated databases
+    <li> updated SCOP domain fetch to use new URLs
+    <li> CATH domain fetch removed (service discontinued for now)
+    <li> Mac Sierra crashes fixed
+   </ul>
+   </blockquote>
+
+<!-- if there is a 1.11.3 release
+   <h3><a name="1.11.3">Changes in release 1.11.3</a> relative to
+    <a href="#1.11.2">release 1.11.2</a>:</h3>
+
+   <blockquote>
+   <ul>
+    <li>EDS fetch uses the PDBe instead of the Uppsala Electron Density Server
+   </ul>
+   </blockquote>
+-->
+
+  </blockquote>
+ </body>
+</html>

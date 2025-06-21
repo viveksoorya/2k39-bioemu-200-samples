@@ -1,0 +1,231 @@
+<!--
+--- UCSF Chimera Copyright ---
+Copyright (c) 2015 Regents of the University of California.
+All rights reserved.  This software provided pursuant to a
+license agreement containing restrictions on its disclosure,
+duplication and use.  This notice must be embedded in or
+attached to all copies, including partial copies, of the
+software or any revisions or derivations thereof.
+--- UCSF Chimera Copyright ---
+-->
+
+<html><head>
+<title>pipes</title>
+</head><body>
+<font size="-1">
+<a href="../framecommand.html" target="_top">Chimera Commands Index</a>
+</font>
+
+<h3><a href="usageconventions.html">Usage</a>:
+ <BR><b>pipes</b> &nbsp;<i>model-spec</i>&nbsp;
+<a href="#options"><i>options</i></a></h3>
+<h3><a href="usageconventions.html">Usage</a>:
+ <BR><b>~pipes</b> &nbsp;<i>model-spec</i>
+</h3>
+<p>
+<b>Pipes</b> is the command-line implementation of
+<a href="../../ContributedSoftware/pipesandplanks/pipesandplanks.html">
+<b>PipesAndPlanks</b></a>, which creates a VRML model of a protein
+showing helices as &ldquo;pipes&rdquo; (cylinders), 
+strands as &ldquo;planks&rdquo; (rectangular boxes),
+and the remaining coil as thin connectors. 
+Arrowheads can be included to indicate chain directionality.
+Pipes and planks are only generated for proteins;
+helix and strand assignments are taken from the input structure
+file or generated with <a href="ksdssp.html"><b>ksdssp</b></a>.
+See also: 
+<a href="define.html"><b>define</b></a>,
+<a href="rainbow.html"><b>rainbow</b></a>,
+<a href="ribbon.html"><b>ribbon</b></a>,
+<a href="nucleotides.html"><b>nucleotides</b></a>, the
+<a href="../tutorials/pipes.html">Pipes and Planks tutorial</a>
+</p><p>
+<a name="modelspec">
+<i>Model-spec</i> can be a specific model number or range of model numbers
+(preceded by #), or simply <b>#</b> or the word <b>all</b> 
+to indicate all relevant models.</a>
+</p><p>
+The pipes-and-planks model is assigned the same model number as the 
+original molecule model, and the original model is hidden.
+The <b>~pipes</b> command deletes the pipes-and-planks model and re-shows
+the original model. Models can also be hidden and shown
+using the <a href="../modelpanel.html"><b>Model Panel</b></a> or the
+command <a href="modeldisplay.html"><b>modeldisplay</b></a>.
+</p>
+
+<a name="options">
+<h4>Options</h4>
+</a><p>
+Option keywords can be truncated to unique strings
+and their case does not matter.
+A vertical bar &ldquo;|&rdquo; designates mutually exclusive options, and
+default values are indicated with <b>bold</b>.
+Synonyms for true: True, 1.  Synonyms for false: False, 0.
+</p>
+<blockquote>
+<b>helixColor</b> &nbsp;<i>colorname</i>
+<br>
+How to color helix pipes. 
+The <i>colorname</i> can be <b>none</b> (default) to use the 
+<a href="../../UsersGuide/hierarchy.html#coloring">residue color</a>
+(ribbon color) of the first residue in each helix; for example,
+if a protein chain had been <a href="rainbow.html">rainbow-colored</a> from
+N-terminus to C-terminus, each helix pipe would be shown with a different 
+color in the rainbow range. Otherwise, the <i>colorname</i> can be any 
+<a href="color.html#colorname">color name</a> that specifies a single color.
+</blockquote>
+<blockquote>
+<b>strandColor</b> &nbsp;<i>colorname</i>
+<br>
+How to color strand planks. 
+The <i>colorname</i> can be <b>none</b> (default) to use the 
+<a href="../../UsersGuide/hierarchy.html#coloring">residue color</a>
+(ribbon color) of the first residue in each strand, otherwise any
+<a href="color.html#colorname">color name</a> that specifies a single color.
+</blockquote>
+<blockquote>
+<b>coilColor</b> &nbsp;<i>colorname</i>
+<br>
+How to color representations of 
+<b><i>coil</i></b> (non-helix non-strand biopolymer segments).
+The <i>colorname</i> can be <b>none</b> (default) to use the 
+<a href="../../UsersGuide/hierarchy.html#coloring">residue color</a>
+(ribbon color) of the first residue in each coil segment, otherwise any
+<a href="color.html#colorname">color name</a> that specifies a single color.
+</blockquote>
+<blockquote>
+<b>helixArrow</b> &nbsp;<b>true</b>&nbsp;|&nbsp;false
+<br>
+Whether to place arrowheads on the C-terminal ends of helix pipes
+to indicate N&rarr;C directionality.
+</blockquote>
+<blockquote>
+<b>strandArrow</b> &nbsp;<b>true</b>&nbsp;|&nbsp;false
+<br>
+Whether to place arrowheads on the C-terminal ends of strand planks
+to indicate N&rarr;C directionality.
+</blockquote>
+<blockquote>
+<a name="helixFixedRadius">
+<b>helixFixedRadius</b></a> &nbsp;<b>true</b>&nbsp;|&nbsp;false
+<br>
+Whether to use a <a href="#helixRadius">constant radius</a>
+for all pipes (default) or a variable radius
+based on the distances from the constituent &alpha;-carbons to the helix axis.
+</blockquote>
+<blockquote>
+<a name="helixRadius">
+<b>helixRadius</b></a> &nbsp;<i>radius</i>
+<br>
+If <a href="#helixFixedRadius">fixed</a>,
+the radius of helix pipes (default <b>1.25</b> &Aring;).
+</blockquote>
+<blockquote>
+<a name="helixSplit">
+<b>helixSplit</b></a> &nbsp;true&nbsp;|&nbsp;<b>false</b>
+<br>
+Whether to split a helix when the ratio of maximum to minimum distance 
+from &alpha;-carbons to the axis exceeds the
+<a href="#helixSplitRatio">helix split ratio</a>.
+</blockquote>
+<blockquote>
+<a name="helixSplitRatio">
+<b>helixSplitRatio</b></a> &nbsp;<i>ratio</i>
+<br>
+Ratio of maximum to minimum distance from &alpha;-carbons to the axis
+above which a helix will be split, if <a href="#helixSplit">allowed</a>
+(default <b>2.5</b>).
+</blockquote>
+<blockquote>
+<a name="strandFixedWidth">
+<b>strandFixedWidth</b></a> &nbsp;<b>true</b>&nbsp;|&nbsp;false
+<br>
+Whether to use a <a href="#strandWidth">constant width</a>
+for all planks (default) or a variable width
+based on the distances from the constituent &alpha;-carbons to the strand axis.
+</blockquote>
+<blockquote>
+<a name="strandWidth">
+<b>strandWidth</b></a> &nbsp;<i>width</i>
+<br>
+If <a href="#strandFixedWidth">fixed</a>,
+the width of strand planks (default <b>2.5</b> &Aring;).
+</blockquote>
+<blockquote>
+<a name="strandFixedThickness">
+<b>strandFixedThickness</b></a> &nbsp;<b>true</b>&nbsp;|&nbsp;false
+<br>
+Whether to use a <a href="#strandThickness">constant thickness</a>
+for all planks (default) or a variable thickness
+based on the distances from the constituent &alpha;-carbons to the strand axis.
+</blockquote>
+<blockquote>
+<a name="strandThickness">
+<b>strandThickness</b></a> &nbsp;<i>thickness</i>
+<br>
+If <a href="#strandFixedThickness">fixed</a>, 
+the thickness of strand planks (default <b>1.0</b> &Aring;).
+</blockquote>
+<blockquote>
+<a name="strandSplit">
+<b>strandSplit</b></a> &nbsp;true&nbsp;|&nbsp;<b>false</b>
+<br>
+Whether to split a strand when the ratio of maximum to minimum distance 
+from &alpha;-carbons to the axis exceeds the
+<a href="#strandSplitRatio">strand split ratio</a>.
+</blockquote>
+<blockquote>
+<a name="strandSplitRatio">
+<b>strandSplitRatio</b></a> &nbsp;<i>ratio</i>
+<br>
+Ratio of maximum to minimum distance from &alpha;-carbons to the axis
+above which a strand will be split, if <a href="#strandSplit">allowed</a>
+(default <b>2.5</b>).
+</blockquote>
+<blockquote>
+<b>displayCoils</b> &nbsp;<b>true</b>&nbsp;|&nbsp;false
+<br>
+Whether to include coil representations in the pipes-and-planks model.
+</blockquote>
+<blockquote>
+<b>coilWidth</b> &nbsp;<i>width</i>
+<br>
+Width of coil representations (default <b>0.25</b> &Aring;).
+</blockquote>
+<blockquote>
+<b>coilThickness</b> &nbsp;<i>thickness</i>
+<br>
+Thickness of coil representations (default <b>0.25</b> &Aring;).
+</blockquote>
+<blockquote>
+<b>coilSubdivision</b> &nbsp;<i>N</i>
+<br>
+The number of segments per residue used to represent coils (default <b>10</b>).
+</blockquote>
+<blockquote>
+<b>helixEdgeColor</b> &nbsp;<i>colorname</i>
+<br>
+How to color outlines on helix pipes.
+This and the following edge color (outline) options merely supplement 
+<a href="../print.html#silhouettes">silhouettes</a>,
+and would typically be used together with silhouettes and in the same color,
+for example, all black as in the
+<a href="../tutorials/pipes.html">Pipes and Planks tutorial</a>.
+The <i>colorname</i> can be <b>none</b> (default) for no outlines, otherwise 
+any <a href="color.html#colorname">color name</a> that specifies a single color.
+</blockquote>
+<blockquote>
+<b>strandEdgeColor</b> &nbsp;<i>colorname</i>
+<br>
+How to color outlines on strand planks.
+The <i>colorname</i> can be <b>none</b> (default) for no outlines, otherwise 
+any <a href="color.html#colorname">color name</a> that specifies a single color.
+</blockquote>
+<blockquote>
+<b>coilEdgeColor</b> &nbsp;<i>colorname</i>
+<br>
+How to color outlines on coil representations.
+The <i>colorname</i> can be <b>none</b> (default) for no outlines, otherwise 
+any <a href="color.html#colorname">color name</a> that specifies a single color.
+</blockquote>
+</body></html>

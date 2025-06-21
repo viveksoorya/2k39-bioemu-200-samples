@@ -1,0 +1,58 @@
+#version 120
+
+#ifdef USE_LIGHTING
+varying vec3 N;
+varying vec3 v;
+#endif
+
+#ifdef USE_INSTANCING
+attribute vec3 instanceScale;
+attribute mat4 instanceTransform;
+#endif
+
+#ifdef USE_INSTANCE_COLOR
+attribute vec4 instanceColor;
+#endif
+
+void main(void)
+{
+#ifdef USE_INSTANCING
+  vec4 vScale = vec4(instanceScale * vec3(gl_Vertex), gl_Vertex.w);
+  vec4 vEye = gl_ModelViewMatrix * (instanceTransform * vScale);
+  vec3 normal = (instanceTransform * vec4(gl_Normal,0)).xyz;
+#else
+  vec4 vEye = gl_ModelViewMatrix * gl_Vertex;
+  vec3 normal = gl_Normal;
+#endif
+
+#ifdef USE_LIGHTING
+  v = vEye.xyz;
+  N = normalize(gl_NormalMatrix * normal);
+#endif
+
+  gl_Position = gl_ProjectionMatrix * vEye;
+
+#ifdef USE_INSTANCE_COLOR
+  gl_FrontColor = instanceColor;
+#else
+  gl_FrontColor = gl_Color;
+#endif
+
+#if defined USE_TEXTURE_1D || defined USE_TEXTURE_2D || defined USE_TEXTURE_3D
+  gl_TexCoord[0] = gl_MultiTexCoord0;
+#endif
+
+#ifdef USE_SHADOWS
+  vec4 texCoord = vEye * mat4(gl_EyePlaneS[1], gl_EyePlaneT[1],
+         	              gl_EyePlaneR[1], gl_EyePlaneQ[1]);
+  gl_TexCoord[1] = gl_TextureMatrix[1] * texCoord;
+#endif
+
+#ifdef USE_FOG
+  gl_FogFragCoord = abs(vEye.z);
+#endif
+
+#ifdef USE_CLIP_VERTEX
+  gl_ClipVertex = vEye;
+#endif
+}

@@ -1,0 +1,395 @@
+<!doctype html public "-//W3C//DTD HTML 4.0//EN">
+<!-- vim:sw=2:
+>>> UCSF Chimera Copyright
+Copyright (c) 2008-2014 Regents of the University of California.
+All rights reserved.  This software provided pursuant to a
+license agreement containing restrictions on its disclosure,
+duplication and use.  This notice must be embedded in or
+attached to all copies, including partial copies, of the
+software or any revisions or derivations thereof.
+<<< UCSF Chimera Copyright
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="icon" href="chimera16.png" type="image/png">
+<title>Web Services Used by UCSF Chimera</title>
+<style type="text/css">
+A.nounder:link {text-decoration: none}
+A.nounder:visited {text-decoration: none}
+A.nounder:active {text-decoration: none}
+A.nounder:hover {text-decoration: underline; color: red;}
+</style>
+</head>
+<body>
+<a name="top"></a>
+<p>
+<img src="titleChimera.png" width="370" height="55" alt="logo">
+</p>
+
+<h2>Web Services Used by UCSF Chimera</h2>
+<p>
+Web services accessed by Chimera fall into two general categories:
+<ul>
+<li><a href="#data">Data Retrieval Services</a>
+<li><a href="#comp">Computational Services</a>
+</ul>
+See also:
+<a href="#webdatasites">Sites that provide Chimera web data</a>
+</p>
+
+<h3><a href="#top" class="nounder">&bull;</a>
+<a name="data">Data Retrieval Web Services Used by Chimera</a></h3>
+<blockquote>
+
+<dt><a name="astral" href="https://astral.berkeley.edu/index.html" 
+target="_blank"><b>ASTRAL Compendium</b></a>
+<dd>
+Allows <a href="UsersGuide/fetch.html">fetching</a> 
+domain structures specified by
+<a href="UsersGuide/scop.html">SCOP domain identifier</a>.
+<br><br>
+
+<dt><a name="castp" href="http://sts.bioe.uic.edu/castp/"
+target="_blank"><b>Computed Atlas of Surface Topography of proteins</b></a>
+(CASTp)
+<dd>
+Allows <a href="UsersGuide/fetch.html">fetching</a> 
+precomputed <a href="UsersGuide/castp.html">pocket measurements</a> 
+and corresponding structures specified by PDB ID.
+<br><br>
+
+<dt><a name="emdb" href="https://www.ebi.ac.uk/pdbe/emdb/"
+target="_blank"><b>Electron Microscopy Data Bank</b></a> (EMDB)
+<dd>
+Allows <a href="UsersGuide/fetch.html">fetching</a> 
+electron density maps by EMDB identifier and finding maps by keyword search.
+<br><br>
+
+<dt><a name="modbase" 
+href="https://modbase.compbio.ucsf.edu/modbase-cgi/index.cgi"
+target="_blank"><b>ModBase</b></a>
+<dd>
+Allows <a href="UsersGuide/fetch.html">fetching</a> 
+<i>modeled</i> structures 
+(<a href="UsersGuide/modbase.html">comparative models</a>)
+specified by SwissProt, TrEMBL, GenPept or PIR accession code.
+<br><br>
+
+<dt><a name="ndb" <a href="http://ndbserver.rutgers.edu/index.html" 
+target="_blank"><b>Nucleic Acid Database</b></a> (NDB)
+<dd>
+Translates NDB ID codes into PDB ID codes, which are then used to 
+<a href="UsersGuide/fetch.html">fetch</a> structures
+from the <a href="#pdb">PDB</a>.
+<br><br>
+
+<dt><a name="pdb" href="https://www.rcsb.org" 
+target="_blank"><b>Protein Data Bank</b></a> (RCSB PDB)
+<dd>
+Allows <a href="UsersGuide/fetch.html">fetching</a> structures 
+in PDB and mmCIF formats by PDB ID.
+Also provides lookup of other PDB entry information by
+<a href="UsersGuide/blast.html"><b>Blast Protein</b></a> and 
+<a href="ContributedSoftware/uniprot/uniprot.html"><b>PDB/UniProt Info</b></a>.
+<br><br>
+
+<dt><a name="eds" 
+<a href="https://www.ebi.ac.uk/pdbe/eds/" target="_blank"><b>Protein Data Bank
+in Europe</b></a>
+<dd>
+Allows <a href="UsersGuide/fetch.html">fetching</a> 
+electron density maps (2fo-fc and fo-fc) specified by PDB ID.
+<br><br>
+
+<dt><a name="pqs" href="http://pqs.ebi.ac.uk/pqs-doc.shtml" 
+target="_blank"><b>Protein Quaternary Structure</b></a> (PQS)
+<dd>
+Allows <a href="UsersGuide/fetch.html">fetching</a> 
+<i>predicted</i> biological units specified by PDB ID.
+<br><br>
+
+<dt><a name="pubchem3d"
+href="https://pubchemdocs.ncbi.nlm.nih.gov/pubchem3d"
+target="_blank"><b>PubChem3D</b></a>
+<dd>
+Allows <a href="UsersGuide/fetch.html">fetching</a> 
+<i>modeled</i> organic molecule structures specified by
+<a href="https://pubchem.ncbi.nlm.nih.gov/"
+target="_blank">PubChem</a> CID.
+<br><br>
+
+<dt><a name="uniprot" href="https://www.uniprot.org/" 
+target="_blank"><b>UniProt</b></a>
+<dd>
+Allows <a href="UsersGuide/fetch.html">fetching</a> 
+protein sequences and their feature annotations by UniProt ID,
+either for PDB structure chains by 
+<a href="ContributedSoftware/uniprot/uniprot.html"><b>PDB/UniProt Info</b></a>,
+or independent of structure.
+<br><br>
+
+<dt><a name="viperdb" 
+href="http://viperdb.scripps.edu/" target="_blank"><b>Virus
+Particle Explorer database</b></a>
+<dd>
+Allows <a href="UsersGuide/fetch.html">fetching</a> 
+icosahedral virus capsid structures (transformed into a standard
+orientation) specified by PDB ID.
+
+</blockquote>
+
+<h3><a href="#top" class="nounder">&bull;</a>
+<a name="comp">Computational Web Services Used by Chimera</a></h3>
+<blockquote>
+
+<!--
+<dt><a name="apbs"><b>APBS</b></a>
+<dd>
+Chimera provides an
+<a href="ContributedSoftware/apbs/apbs.html">interface</a>
+to calculating electrostatic potential maps using an
+<a href="http://www.poissonboltzmann.org/" target="_blank">APBS</a>
+(Adaptive Poisson-Boltzmann Solver) web service provided by the
+<a href="http://nbcr.ucsd.edu/" target="_blank">National Biomedical
+Computation Resource (NBCR)</a>.
+<br><br>
+
+<dt><a name="vina"><b>AutoDock Vina</b></a>
+<dd>
+Chimera provides an 
+<a href="ContributedSoftware/vina/vina.html">interface</a>
+to single-ligand docking calculations using an
+<a href="http://vina.scripps.edu/" target="_blank">AutoDock Vina</a> 
+web service provided by the
+<a href="http://nbcr.ucsd.edu/" target="_blank">NBCR</a>.
+<br><br>
+-->
+
+<dt><a name="blast"><b>BLAST Protein</b></a>
+<dd>
+The <a href="UsersGuide/blast.html"><b>Blast Protein</b></a> tool
+performs protein sequence searches using a
+<a href="https://blast.ncbi.nlm.nih.gov/" target="_blank">BLAST</a>
+web service hosted by the
+<a href="https://www.cgl.ucsf.edu/Overview/index.html" target="_blank">UCSF
+Resource for Biocomputing, Visualization, and Informatics (RBVI)</a>.
+<br><br>
+
+<dt><a name="clustalomega"><b>Clustal Omega</b></a>
+<dd>
+Multiple sequence alignment with
+<a href="http://www.clustal.org/omega/" target="_blank">Clustal Omega</a>
+can be performed using a web service hosted by the
+<a href="https://www.cgl.ucsf.edu/Overview/index.html" target="_blank">UCSF
+RBVI.</a> 
+The sequences of structure chains in Chimera can be submitted via the 
+<a href="ContributedSoftware/align/align.html"><b>Align Chain Sequences</b></a>
+tool, and/or sequences already in an alignment shown in 
+<a href="ContributedSoftware/multalignviewer/framemav.html"
+target="_top"><b>Multalign Viewer</b></a>
+can be submitted for realignment.
+<br><br>
+
+<dt><a name="modeller"><b>Modeller</b></a>
+<dd>
+Chimera provides an
+<a href="ContributedSoftware/multalignviewer/modeller.html">interface</a>
+for comparative (homology) modeling, loop remodeling, and building
+missing segments using
+<a href="https://www.salilab.org/modeller/" target="_blank">Modeller</a>,
+either run locally or using a web service hosted by the
+<a href="https://www.cgl.ucsf.edu/Overview/index.html" target="_blank">UCSF
+RBVI.</a>
+<br><br>
+
+<dt><a name="muscle"><b>MUSCLE</b></a>
+<dd>
+Multiple sequence alignment with
+<a href="https://drive5.com/muscle/" target="_blank">MUSCLE</a>
+can be performed using a web service hosted by the
+<a href="https://www.cgl.ucsf.edu/Overview/index.html" target="_blank">UCSF
+RBVI.</a> 
+The sequences of structure chains in Chimera can be submitted via the
+<a href="ContributedSoftware/align/align.html"><b>Align Chain Sequences</b></a>
+tool, and/or sequences already in an alignment shown in 
+<a href="ContributedSoftware/multalignviewer/framemav.html"
+target="_top"><b>Multalign Viewer</b></a>
+can be submitted for realignment.
+<br><br>
+
+<!--
+<dt><a name="pdb2pqr"><b>PDB2PQR</b></a>
+<dd>
+Chimera provides an
+<a href="ContributedSoftware/apbs/pdb2pqr.html">interface</a>
+to structure cleanup, parameter assignment, and
+<a href="UsersGuide/tutorials/pdbintro.html#PQR">PQR</a> file generation
+using a
+<a href="http://www.poissonboltzmann.org/" target="_blank">PDB2PQR</a>
+web service provided by the
+<a href="http://nbcr.ucsd.edu/" target="_blank">NBCR</a>.
+<br><br>
+-->
+
+<dt><a name="modelscore">
+<a href="https://modbase.compbio.ucsf.edu/evaluation/"
+target="_blank"><b>SaliLab Model Evaluation Server</b></a>
+<dd>
+Can be called to calculate additional scores for comparative models 
+using the <b>Fetch Scores</b> menu in the 
+<a href="UsersGuide/modbase.html#modellist"><b>Model List</b></a> dialog.
+<br><br>
+
+<dt><a name="saxs"><b>Small-Angle X-Ray Profile</b></a>
+<dd>
+The <a href="ContributedSoftware/saxs/saxs.html"><b>Small-Angle
+X-Ray Profile</b></a> tool calculates small-angle X-ray
+scattering (SAXS) profiles from structures using the program
+<a href="https://modbase.compbio.ucsf.edu/foxs/about.html" 
+target="_blank"><b>FoXS</b></a> (courtesy of Dina Schneidman,
+<a href="https://salilab.org/index.html" target="_blank">Sali group</a>)
+via a web service hosted by the
+<a href="https://www.cgl.ucsf.edu/Overview/index.html" target="_blank">UCSF
+RBVI</a>.
+<br><br>
+
+<dt><a name="smi23d"><b>smi23d</b></a> 
+<dd>
+Generates <i>modeled</i> organic molecule structures specified by
+<a href="https://www.daylight.com/dayhtml/doc/theory/theory.smiles.html"
+target="_blank">SMILES</a> string with the command
+<a href="UsersGuide/midas/open.html"><b>open</b></a> or in
+<a href="ContributedSoftware/editing/editing.html"><b>Build Structure</b></a>.
+The <i>smi23d</i> web service</a> is provided by the
+cheminformatics group at Indiana University
+and deploys the same procedure as described for <b>Pub3D</b> in
+<a href="https://www.biomedcentral.com/1471-2105/8/487" 
+target="_blank">Willighagen <i>et al.</i></a>, <i>BMC Bioinformatics</i> 
+<b>8</b>:487 (2007).
+<br><br>
+
+<dt><a name="smiles"
+href="https://cactus.nci.nih.gov/translate/" target="_blank"><b>SMILES
+Translator</b></a>
+<dd>
+The <a href="https://cactus.nci.nih.gov/translate/" target="_blank">SMILES
+translator</a> provided by the <a href="https://cactus.nci.nih.gov/" 
+target="_blank">National Cancer Institute CADD group</a> is used to
+generate 3D molecule structures specified by
+<a href="https://www.daylight.com/dayhtml/doc/theory/theory.smiles.html"
+target="_blank">SMILES</a> string with the command
+<a href="UsersGuide/midas/open.html"><b>open</b></a> or in
+<a href="ContributedSoftware/editing/editing.html"><b>Build Structure</b></a>.
+<br><br>
+
+<dt><a name="diagram"><b>2D Chemical Diagram</b></a>
+<dd>
+Used by <a href="ContributedSoftware/diagram/diagram.html"><b>Structure
+Diagram</b></a> and
+<a href="ContributedSoftware/viewdock/framevd.html" 
+target="_top"><b>ViewDock</b></a>
+to draw 2D diagrams of small organic molecules given coordinates or a
+<a href="https://www.daylight.com/dayhtml/doc/theory/theory.smiles.html"
+target="_blank">SMILES</a> string. This web service 
+is implemented in Java using the 
+<a href="https://sourceforge.net/apps/mediawiki/cdk/"
+target="_blank">Chemistry Development Kit</a>
+and is provided by the
+<a href="https://www.cgl.ucsf.edu/Overview/index.html" target="_blank">UCSF
+RBVI</a>.
+
+</blockquote>
+
+<a name="webdatasites">
+<h2>Sites That Provide Chimera Web Data</h2></a>
+
+<p>
+Accessing
+<a href="ContributedSoftware/webdata/chimerax.html">Chimera web data</a>
+(such as by clicking a link or choosing a display option at one of these
+sites) automatically displays database contents or server results
+in a locally installed copy of Chimera.
+See also: <a href="#top">Web services used by Chimera</a>
+</p>
+
+<blockquote>
+
+<dt><a name="consurf" href="https://consurf.tau.ac.il/"
+target="_blank"><b>ConSurf Server</b></a>
+<dd>
+Clicking the link to view results in Chimera displays the query structure
+and the multiple sequence alignment from ConSurf, both colored by the
+server's conservation measure.  The ConSurf-calculated phylogenetic tree 
+and custom headers are shown along with the sequence alignment
+(see <a href="https://www.cgl.ucsf.edu/chimera/consurf/consurf.html"
+target="_blank">screenshot and details</a>).
+<br><br>
+
+<dt><a name="modbase2" 
+href="https://modbase.compbio.ucsf.edu/modbase-cgi/index.cgi"
+target="_blank"><b>ModBase</b></a>
+<dd>
+The database contains predicted protein structures from 
+comparative (homology) modeling.
+The &ldquo;Chimera (Structure/Alignment)&rdquo; option displays the modeled 
+structure along with the template structure and the sequence alignment
+between the two.
+The &ldquo;Visualize Surface Cavities (Chimera)&rdquo; option shows
+a molecular surface of the modeled structure colored by
+<a href="https://compbio.cs.princeton.edu/concavity/" 
+target="_blank">ConCavity</a> binding site prediction score. 
+<br><br>
+
+<dt><a name="psp" 
+href="https://www.phosphosite.org/" 
+target="_blank"><b>PhosphoSitePlus<sup>&reg;</sup> (PSP)</b></a>
+<dd>
+Clicking &ldquo;Get ChimeraX Script&rdquo; on the Structure Viewer
+will show the structure in Chimera with experimentally observed sites
+of post-translational modification (PTM) colored and labeled.  PSP
+is continuously updated with data on phosphorylation
+and other commonly studied PTMs.
+<br><br>
+
+<dt><a name="salign" 
+href="https://salilab.org/salign/" target="_blank"><b>SALIGN Webserver</b></a>
+<dd>
+The SALIGN server for multiple protein sequence/structure alignment
+can launch Chimera to display the superimposed structures
+and associated multiple sequence alignment.
+<br><br>
+
+<!--
+<dt><a name="sfld"
+href="http://sfld.rbvi.ucsf.edu" target="_blank"><b>Structure-Function 
+Linkage Database</b></a>
+<dd>
+Chimera web data files are provided for viewing enzyme structures, 
+active sites (Chimera sessions), and sequence alignments.
+<br><br>
+-->
+
+<dt><a name="swissdock"
+href="http://www.swissdock.ch/" target="_blank"><b>SwissDock Server</b></a>
+<dd>
+The SwissDock server allows launching Chimera
+(and its <a href="ContributedSoftware/viewdock/framevd.html" 
+target="_top"><b>ViewDock</b></a> tool)
+to display the results; the site includes a short example video.
+<br><br>
+
+<dt><a name="genomebrowser" href="https://genome.ucsc.edu/"
+target="_blank"><b>UCSC Genome Browser</b></a>
+<dd>
+Chimera links are provided in UCSC Gene pages 
+(see <a href="https://genome.ucsc.edu/cgi-bin/hgGene?db=hg18&hgg_gene=uc002mqk.2&hgg_chrom=chr19&hgg_start=11061056&hgg_end=11105505" 
+target="_blank">example</a>) and SNP track details pages.
+Clicking a Chimera link displays the corresponding structure
+with nonsynonymous SNP residues colored and
+labeled with the dbSNP identifier.
+
+</blockquote>
+
+</body>
+</html>

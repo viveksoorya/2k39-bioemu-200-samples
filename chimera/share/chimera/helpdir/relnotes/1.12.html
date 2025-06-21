@@ -1,0 +1,95 @@
+<!doctype html public "-//W3C//DTD HTML 4.0//EN">
+<!-- vim: sw=1:
+>>> UCSF Chimera Copyright
+Copyright (c) 2017 Regents of the University of California.
+All rights reserved.  This software provided pursuant to a
+license agreement containing restrictions on its disclosure,
+duplication and use.  This notice must be embedded in or
+attached to all copies, including partial copies, of the
+software or any revisions or derivations thereof.
+<<< UCSF Chimera Copyright
+-->
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <link rel="icon" href="../chimera16.png" type="image/png">
+  <title>UCSF Chimera Version 1.12 Build 41623 Release Notes</title>
+ </head>
+
+ <body>
+  <p>
+  <img src="../titleChimera.png" width="370" height="55" alt="logo">
+  </p>
+
+<font size="-1">
+<a href="http://www.cgl.ucsf.edu/chimera/docs/relnotes.html">Release History</a>
+</font>
+
+  <h2>UCSF Chimera Version 1.12 Build 41623 Release Notes (24 October 2017)</h2>
+
+  <h3>
+   Changes since the <a href="1.11.html">previous production release (1.11)</a>:
+  </h3>
+
+  <blockquote>
+   <h4><a name="general">General Changes:</a></h4>
+   <ul>
+   <li>AmberTools updated to version 17
+    <li>EDS fetch uses PDBe instead of the Uppsala Electron Density Server
+    <li>EMDB fetch uses Chinese mirror site for .cn hosts
+    <li>PDB/mmCIF fetch uses www.rcsb.org instead of www.pdb.org
+    <li>updated Indiana SMILES info URL
+    <li>identify fetched EDS difference map as signed data
+    (automatically display both positive and negative isosurfaces)
+    <li>try to handle Relion 2.0 MRC files that have uninitialized data for origin
+    <li>file browser initial location reset by most recent of: <b>cd</b> command, 
+    session file opened, or system command-line startup (non-Windows),
+    in addition to open/save with file browser
+    <li>&ldquo;click-to-center&rdquo; mouse mode (default Ctrl-right button) 
+    uses surface vertex instead of entire surface
+   </ul>
+
+   <h4><a name="tool_changes">Tool Changes:</a></h4>
+   <ul>
+
+    <li><b>Add Charge</b> (Structure Analysis, Structure Editing) &mdash; 
+    precalculated charges from the Amber Parameter Database used for NAD and NDP
+    <li><b>Morph Conformations</b> (Structure Comparison) &mdash; 
+    option to set core fraction used in hinge detection
+   </ul>
+
+   <h4><a name="command_changes">Command Changes:</a></h4>
+   <ul>
+    <li><b>addcharge</b> &mdash; 
+    precalculated charges from the Amber Parameter Database used for NAD and NDP
+    <li><b>clip</b>, <b>thickness</b> &mdash; 
+    automatically push the back plane slightly behind the front plane 
+    if their positions would have been reversed 
+    <li><b>hbonds</b> (<b>findhbond</b>) &mdash; 
+    <b>lineType</b> option to make H-bond pseudobonds dashed, dotted,
+     <i>etc.</i> instead of the default solid lines
+    <li><b>morph</b> &mdash; option to set core fraction used in hinge detection
+    <li><b>setattr</b> &mdash; <b>~setattr</b> changed to delete the attribute
+    rather than to set it to no value; no value can be specified as <b>none</b>
+    with the <b>setattr</b> command instead
+   </ul>
+
+   <h4><a name="bug_fixes">Notable Bug Fixes:</a></h4>
+   <ul>
+   <li>Mol2 output includes metal-coordination bonds
+   <li><b>Dock Prep</b> consistent handling of alternate locations in 
+    adjacent residues
+   <li>fixed VRML output for labels with spaces (<i>e.g.</i>, residue labels)
+   <li>fixed PIL initialization bug that occasionally prevented 
+    Chimera from starting
+   <li>Updated SSL libraries so that Chimera can successfully contact "https" URLs
+   </ul>
+
+   <h4><a name="bugs">Known Bugs:</a></h4>
+   <ul>
+    <li><a href="http://www.rbvi.ucsf.edu/chimera/docs/UsersGuide/surfprobs.html">surfaces fail</a> for some structures
+   </ul>
+
+  </blockquote>
+ </body>
+</html>

@@ -1,0 +1,119 @@
+#!/bin/sh
+#
+# --- UCSF Chimera Copyright ---
+# Copyright (c) 2000-2003 Regents of the University of California.
+# All rights reserved.  This software provided pursuant to a
+# license agreement containing restrictions on its disclosure,
+# duplication and use.  This notice must be embedded in or
+# attached to all copies, including partial copies, of the
+# software or any revisions or derivations thereof.
+# --- UCSF Chimera Copyright ---
+#
+# $Id: base.sh 40585 2015-05-13 21:12:50Z gregc $
+
+# set path so we get the versions of command we expect
+originalpath="$PATH"
+PATH=/bin:/usr/bin:"$PATH"
+
+# application name can be hardcoded by altering the next line
+app=`basename "$0"`
+
+# if CDPATH is set, then cd echos the directory as well
+if test -n "$CDPATH"
+then
+	CHIMERA_CDPATH="$CDPATH"
+	export CHIMERA_CDPATH
+fi
+unset CDPATH
+
+# canonicalize CHIMERA for consistency with Tcl/Tk (remove symbolic links)
+if test -n "$CHIMERA" -a -x "$CHIMERA/bin/chimera" -a -d "$CHIMERA/share/chimera"
+then
+	CHIMERA=`cd "$CHIMERA"; pwd -P`
+else
+	if test -n "$CHIMERA"
+	then
+		echo "Ignoring CHIMERA environment variable" 1>&2
+	fi
+	# Assume that the true location of $app is in CHIMERA/bin/ and
+	# deduce what CHIMERA should be even if there are symbolic links
+	bindir=`dirname "$0"`
+	if test ! -L "$0"
+	then
+		bindir=`cd "$bindir"; pwd -P`
+	else
+		if link=`readlink "$0"`
+		then :
+		else
+			# fallback if readlink doesn't exist
+			link=`ls -l "$0" | sed 's/.* -> //'`
+		fi
+		# $app was a (relative?) symbolic link
+		tmp=`dirname "$link"`
+		bindir=`cd "$bindir"; cd "$tmp"; pwd -P`
+	fi
+	CHIMERA=`dirname "$bindir"`
+fi
+export CHIMERA
+
+# system-dependent setup
+case "`uname -s`" in
+Linux)
+	if test -n "$LD_LIBRARY_PATH"
+	then
+		CHIMERA_LD_LIBRARY_PATH="$LD_LIBRARY_PATH"
+		export CHIMERA_LD_LIBRARY_PATH
+	fi
+	LD_LIBRARY_PATH="$CHIMERA/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+	if test -x "$CHIMERA/bin/need-syslibs"
+	then
+		if "$CHIMERA/bin/need-syslibs" "$CHIMERA"
+		then
+			LD_LIBRARY_PATH="$CHIMERA/syslibs:$LD_LIBRARY_PATH"
+		fi
+	fi
+	export LD_LIBRARY_PATH
+	;;
+Darwin*)
+	if test -n "$FONTCONFIG_FILE"
+	then
+		CHIMERA_FONTCONFIG_FILE="$FONTCONFIG_FILE"
+		export CHIMERA_FONTCONFIG_FILE
+	fi
+	ver=`sw_vers -productVersion | awk -F. '{ print $1"."$2 }'`
+	case $ver in
+	10.[34])
+		FONTCONFIG_FILE=/etc/fonts/fonts.conf
+		;;
+	*)
+		FONTCONFIG_FILE=/usr/X11/lib/X11/fonts/fonts.conf
+		;;
+	esac
+	export FONTCONFIG_FILE
+	if test -n "$DYLD_FALLBACK_LIBRARY_PATH"
+	then
+		CHIMERA_DYLD_FALLBACK_LIBRARY_PATH="$DYLD_FALLBACK_LIBRARY_PATH"
+		export CHIMERA_DYLD_FALLBACK_LIBRARY_PATH
+	fi
+	DYLD_FALLBACK_LIBRARY_PATH="$CHIMERA/lib${DYLD_FALLBACK_LIBRARY_PATH:+:$DYLD_FALLBACK_LIBRARY_PATH}"
+	export DYLD_FALLBACK_LIBRARY_PATH
+	# Make the Tcl/Tk and Python frameworks accessible.
+	if test -n "$DYLD_FRAMEWORK_PATH"
+	then
+		CHIMERA_DYLD_FRAMEWORK_PATH="$DYLD_FRAMEWORK_PATH"
+		export CHIMERA_DYLD_FRAMEWORK_PATH
+	fi
+	DYLD_FRAMEWORK_PATH="$CHIMERA/frameworks${DYLD_FRAMEWORK_PATH:+:$DYLD_FRAMEWORK_PATH}"
+	export DYLD_FRAMEWORK_PATH
+	;;
+esac
+
+# $Id: app.sh 26655 2009-01-07 22:02:30Z gregc $
+# start up with given arguments
+PATH="$originalpath"
+if test $# -gt 0
+then
+	exec "$CHIMERA/bin/.itops" "$@"
+else
+	exec "$CHIMERA/bin/.itops"
+fi

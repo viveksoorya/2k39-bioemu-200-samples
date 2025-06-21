@@ -1,0 +1,11 @@
+source oldff/leaprc.rna.ff99
+addAtomTypes {
+  { "C1"  "C" "sp2" }
+  { "C2"  "C" "sp2" }
+  { "C3"  "C" "sp2" }
+  { "C4"  "C" "sp2" }
+  { "CI"  "C" "sp3" }
+}
+loadamberparams frcmod.parmCHI_YIL
+loadamberparams frcmod.parmbsc0
+loadoff residues.RNA.parmCHI_YIL.bsc.lib

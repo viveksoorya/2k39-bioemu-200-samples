@@ -1,0 +1,499 @@
+<!--
+--- UCSF Chimera Copyright ---
+Copyright (c) 2002-2015 Regents of the University of California.
+All rights reserved.  This software provided pursuant to a
+license agreement containing restrictions on its disclosure,
+duplication and use.  This notice must be embedded in or
+attached to all copies, including partial copies, of the
+software or any revisions or derivations thereof.
+--- UCSF Chimera Copyright ---
+-->
+
+<html><head>
+<title>Getting Started Tutorial - Menu Version</title>
+<style type="text/css">
+img.clRight {float: right; clear: right; border: 1px solid black; margin: 8px}
+img.border {border: 1px solid black}
+table.clRight {float: right; clear: right; margin: 8px}
+</style>
+</head><body>
+<font size="-1">
+<a href="../frametut.html" target="_top">Chimera Tutorials Index</a>
+</font>
+
+<h2>Getting Started Tutorial - Menu Version</h2>
+<p>
+Many tasks in Chimera can be accomplished in multiple ways.
+For example, colors and <a href="../representation.html">
+display styles</a> can be changed with
+the <a href="../menu.html#menuactions"><b>Actions</b> menu</a>
+or by entering <a href="../framecommand.html" target="_top">commands</a>.
+In general, commands are more concise and powerful, 
+but menus allow easy access to features without
+knowledge of commands and their syntax.
+</p><p>
+In this tutorial, many of the same tasks performed with commands in
+the <a href="getting_started.html"><b>Getting Started Tutorial -
+Command Version</b></a> are carried out using the menus instead.
+</p>
+<hr>
+<a name="part1">
+<h3>Menus, Part 1 - Manipulation, Selection, and Chains</h3></a>
+<p>
+Start Chimera by clicking or doubleclicking the <b>Chimera</b> icon
+<img src="Chimera-icon.png" width="20px"> (depending on its location).
+Typically, this icon will be present on the desktop.
+The Chimera executable can also be run from its
+installation location (<a href="../startup.html">details...</a>).
+</p><p>
+A splash screen will appear, to be replaced in a few seconds
+by the main Chimera <a href="../chimerawindow.html">graphics window</a>
+or <a href="../rapid.html"><b>Rapid Access</b></a> interface.
+It doesn't matter which, since opening a structure will switch the display 
+to the graphics window.
+If you like, resize the Chimera window by dragging its lower right corner.
+</p>
+<img class="clRight" src="chimerawindow.png" width="300px">
+</p>
+Now open a structure. Choose <b>File... Fetch by ID</b> from the menu
+and fetch the entry with ID <b>1zik</b> from the 
+Protein Data Bank (<b>PDB</b>).
+Alternatively, if you're not connected to the internet, you can
+<a href="download.html">save</a> the PDB-format file
+<a href="1zik.pdb">1zik.pdb</a> to a convenient location,
+then use <b>File... Open</b> in the Chimera menu to find and open it.
+The structure is a leucine zipper formed by two peptides.
+</p><p>
+The default initial display is ribbons. To also display atoms:
+</p>
+<blockquote>
+<b>Actions... Atoms/Bonds... show</b>
+</blockquote>
+<p>
+This shows all of the atoms and bonds in the structure, except that 
+those in the peptide backbone are suppressed by the ribbon display.
+How to indicate specific parts of a structure for display, coloring, 
+<i>etc.</i> is discussed <a href="#selection">below</a>.
+Initially, heteroatoms (atoms other than carbon) are color-coded
+<a href="../colortables.html#byelement">by element</a>:
+oxygens red, nitrogens blue, <i>etc.</i>
+The carbons retain the model color, in this case tan.
+</p><p>
+<a name="moving"></a>
+Try <a href="../mouse.html">moving the structure with the mouse</a>
+in the main graphics window.  By default: 
+<ul>
+<li>the left mouse button controls rotation
+<li>the middle mouse button controls XY translation
+<li>the right mouse button performs scaling (zooming)
+</ul>
+If you are using a touchpad or single-button mouse, 
+modifier keys allow emulating the middle and right mouse buttons.
+These are <b>option</b> and <b>command</b> 
+(<img src="../icon-clover.png" height=12px width=12px>) on Mac keyboards.
+Multitouch gestures on a Mac touchpad are enabled by default, but can be
+turned off in the preferences (menu: <b>Favorites... Preferences</b>,
+category <b>Mouse</b>).
+</p><p>
+Hide ribbons to reveal the backbone atoms, then show ribbons again:
+<blockquote>
+<b>Actions... Ribbon... hide</b><br>
+<b>Actions... Ribbon... show</b>
+</blockquote>
+</p>
+<img class="clRight" src="sideview.png" width="300px">
+<p>
+Use the <b>Favorites</b> menu to show the
+<a href="../sideview.html#sideview"><b>Side View</b></a>
+for interactive scaling and clipping. 
+It shows a tiny version of the structure. Within the <b>Side View</b>,
+try moving the eye position (the small square)
+and the clipping planes (vertical lines)
+with the left mouse button.  The
+<b>Side View</b> will renormalize itself after movements, so that
+the eye or clipping plane positions may appear to &ldquo;bounce back,&rdquo;
+but your adjustments have been applied.
+Continue moving and scaling the structure with the mouse 
+in the graphics window
+and <b>Side View</b> as desired throughout the tutorial.
+</p><p>
+When the mouse focus is in the graphics window (you may need to click
+into it if you have been interacting with a different window),
+hovering the mouse cursor over an atom, bond, or ribbon segment
+without clicking any buttons
+will show identifying information in a pop-up &ldquo;balloon.&rdquo;
+The balloon will disappear when the cursor is moved away.
+For an atom, the balloon information is of the form:
+<blockquote>
+<b>res-name&nbsp;&nbsp;res-num.chain&nbsp;&nbsp;atom-name</b>
+</blockquote>
+You can see from the balloons that this structure contains
+two peptide chains, A and B, and water (HOH residues), 
+also with chain identifiers A and B.
+</p><p>
+<a name="selection"></a>
+In Chimera, <b><i>selection</i></b> specifies atoms, bonds,
+residues, <i>etc.</i> for subsequent operations
+with the <a href="../menu.html#menuactions"><b>Actions</b> menu</a>.
+Ways to make a <a href="../selection.html">selection</a> include using the 
+<a href="../menu.html#menuselect"><b>Select</b> menu</a> or
+<a href="../selection.html#pickselect">picking</a> from the screen.
+Several tools also provide specialized ways of making selections.
+The <a href="../menu.html#menuactions"><b>Actions</b> menu</a>
+applies to whatever is selected, but when nothing is selected, the
+<a href="../menu.html#menuactions"><b>Actions</b> menu</a>
+applies to everything. For example, 
+<blockquote>
+<b>Select... Residue... LYS</b><br>
+<b>Actions... Color... hot pink</b>
+</blockquote>
+will color all residues named LYS
+<a href="../colortables.html#allcolors">hot pink</a>.
+The selection is highlighted in green,
+and the magnifying glass icon near the bottom right of the window is also green:
+<img src="../inspecticon.png">, indicating that something is selected.
+Clearing the selection (deselecting) beforehand will color everything:
+<blockquote>
+<b>Select... Clear Selection</b><br>
+<b>Actions... Color... hot pink</b>
+</blockquote>
+<a href="../menu.html#menuselect"><b>Select</b> menu</a> choices also
+include chain ID, element, and many other categories of atoms and residues. 
+(More complicated selections can be built up by intersecting some of these
+choices, as shown near the end of <a href="#part2">Part 2</a>.)
+<blockquote>
+<b>Select... Chain... B</b><br>
+<b>Actions... Color... cyan</b><br>
+<b>Actions... Ribbon... hide</b><br>
+<b>Select... Structure... solvent</b><br>
+<b>Actions... Atoms/Bonds... hide</b><br>
+<b>Select... Chemistry... element... N</b><br>
+<b>Actions... Atoms/Bonds... sphere</b><br>
+<b>Select... Clear Selection</b><br>
+<b>Actions... Atoms/Bonds... stick</b><br>
+</blockquote>
+One way to select specific residues or ranges of residues is in the 
+<a href="../../ContributedSoftware/multalignviewer/framemav.html"
+target="_top"><b>Sequence</b></a> tool
+(menu <b>Favorites... Sequence</b>, show sequence for chain A). 
+When the sequence window has mouse focus,
+placing the cursor over a residue symbol in the sequence shows information
+for the corresponding structure residue at the bottom of the window.
+Click-drag a box within the sequence window to select one or more residues
+(as opposed to simply clicking within the light yellow box, which will select 
+the entire helix), then hide their atoms:
+<blockquote>
+<b>Actions... Atoms/Bonds... hide</b>
+</blockquote>
+Quit from the sequence window and display all protein atoms again:
+<blockquote>
+<b>Select... Structure... protein</b><br>
+<b>Actions... Atoms/Bonds... show</b>
+</blockquote>
+Coloring can be limited to only certain representations,
+such as atoms only (not ribbons, surfaces, <i>etc.</i>):
+<blockquote>
+<b>Select... Residue... GLU</b><br>
+<b>Actions... Color... all options</b>
+</blockquote>
+In the resulting
+<a href="../coloractions.html"><b>Color Actions</b></a> dialog:
+<ol>
+  <li>choose to <b>Show all colors</b> (lower right)</li>
+  <li>change the <b>Coloring applies to</b> (target) setting
+  to <b>atoms/bonds</b></li>
+  <li>click to choose any color</li>
+</ol>
+Notice that only the atoms/bonds of the selected residues and
+not their ribbon segments change color.
+Clear the selection (main menu <b>Select... Clear Selection</b>), then in the 
+<a href="../coloractions.html"><b>Color Actions</b></a> dialog:
+<ol>
+  <li>change the coloring target back to <b>all of the above</b></li>
+  <li>click to choose <a href="../colortables.html#allcolors"><b>tan</b></a>
+  (colors are listed alphabetically in the all-colors section)</li>
+  <li>click <b>Close</b> to dismiss the dialog</li>
+</ol>
+Restore heteroatom color-coding:
+<blockquote>
+<b>Actions... Color... by heteroatom</b>
+</blockquote>
+Coloring by heteroatom is useful for showing functional groups, yet 
+keeping different models distinguishable by their different carbon colors.
+</p>
+<table class="clRight">
+<tr><th align="center">
+<a name="reslab">residue labels</a></th></tr>
+<tr><td><img class="border" src="reslab.png" width="265px"></td></tr>
+</table>
+</p><p>
+By default,
+<a href="../selection.html#pickselect">picking</a> from the screen
+is done by clicking on the atom or bond of interest with the left
+mouse button while pressing the <b>Ctrl</b> key.
+To add to an existing selection, also press <b>Shift</b>.
+Try picking two atoms in different residues (Ctrl-click the
+first, Shift-Ctrl-click the second).
+</p><p>
+Show residue labels for the atoms you have selected:
+<blockquote>
+<b>Actions... Label... residue... name + specifier</b>
+</blockquote>
+(<b>Actions... Label... name</b> would show the atom names instead.)
+These 3D labels move along with structures and
+are mainly for interactive use. For figures and movies,
+<a href="../../ContributedSoftware/2dlabels/2dlabels.html">2D labels</a>
+are recommended instead.
+</p><p>
+Promote the selection to the entire residues with the keyboard up arrow
+<i>or</i> the following:
+<blockquote>
+<b>Select... Broaden</b>
+</blockquote>
+Show only the selected atoms:
+<blockquote>
+<b>Actions... Atoms/Bonds... show only</b>
+</blockquote>
+Clear the selection by Ctrl-clicking in empty space, as if 
+<a href="../selection.html#pickselect">picking</a> &ldquo;nothing.&rdquo;
+</p>
+<table class="clRight">
+<tr><th align="center">
+<a name="byelement">coloring by element</a></th></tr>
+<tr><td><img src="byelement.png" width="265px"></td></tr>
+</table>
+<p>
+Turn off residue labels, hide ribbon, display all atoms, and color by element:
+<blockquote>
+<b>Actions... Label... residue... off</b><br>
+<b>Actions... Ribbon... hide</b><br>
+<b>Actions... Atoms/Bonds... show</b><br>
+<b>Actions... Color... by element</b>
+</blockquote>
+The <b>by element</b> coloring is the same as <b>by heteroatom</b>
+except it also color-codes carbons (gray).
+</p><p>
+Generally, each file of coordinates opened in Chimera becomes a 
+<b><i>model</i></b> with an associated model ID number.
+Models are assigned successive numbers starting with 0.   
+The <a href="../modelpanel.html"><b>Model Panel</b></a>
+(open with <b>Tools... General Controls... Model Panel</b>)
+lists the current models and enables many operations upon them.
+</p><p>
+The columns on the left side of the <b class="panel">Model Panel</b> show:
+<ul>
+<li>model ID number</li>
+<li>model color</li>
+<li><b class="panel">A</b>(ctive) - whether
+<a href="../mouse.html#activedef">activated for motion</a></li>
+<li><b class="panel">S</b>(hown) - whether display-enabled</li>
+<li>model name</li>
+</ul>
+Try toggling the checkboxes to see what happens; a model that is not
+activated for motion cannot be rotated or translated interactively.
+In the list of functions on the right side 
+(<i>not</i> the button at the bottom),
+click <b>close</b> to remove model <b>1zik</b>.
+Use the <b>Close</b> button at the bottom to close the <b>Model Panel</b>.
+</p><p>
+Go on to <b>Part 2</b> below, or exit from Chimera with
+<b>File... Quit</b>.
+</p>
+<hr>
+<a name="part2">
+<h3>Menus, Part 2 - Molecular Representations and Surfaces</h3></a>
+<p>
+With Chimera started as described at the beginning of
+<a href="#part1"><b>Part 1</b></a>, 
+choose <b>File... Fetch by ID</b> from the menu
+and fetch the entry with ID <b>1d86</b> from the
+Protein Data Bank (<b>PDB</b>).
+(Alternatively, if you're not connected to the internet, you can
+<a href="download.html">save</a> the PDB-format file
+<a href="1d86.pdb">1d86.pdb</a> to a convenient location,
+then use <b>File... Open</b> in the Chimera menu to find and open it.)
+</p><p>
+The structure contains the molecule netropsin bound to double-helical DNA,
+initially shown with ribbons and stylized representations of the nucleic
+acid sugars and bases.
+<a href="#moving">Move and scale</a> with the mouse in the graphics window
+and <b>Side View</b> as desired throughout the tutorial.
+</p><p>
+A <a href="../menu.html#menupresets">preset</a>
+is a predefined combination of display settings.
+Apply the &ldquo;all atoms&rdquo; preset, which will show the DNA as wire and
+netropsin as spheres:
+<blockquote>
+<b>Presets... Interactive 2 (all atoms)</b>
+</blockquote>
+Color carbons white, then undisplay the water:
+<blockquote>
+<b>Select... Chemistry... element... C</b><br>
+<b>Actions... Color... white</b></br>
+<b>Select... Structure... solvent</b><br>
+<b>Actions... Atoms/Bonds... hide</b>
+</blockquote>
+Remember that hiding atoms does not deselect them; they remain selected, 
+as indicated by the green magnifying glass icon 
+<img src="../inspecticon.png"> near the bottom right of the window,
+until the selection is cleared or replaced with a new selection.
+</p>
+<img class="clRight" src="fourcolors.png">
+<p>
+Residue names can be identified by looking in the <b>Select... Residue</b> menu
+or by hovering the cursor over an atom or bond
+to see information in a pop-up &ldquo;balloon.&rdquo;
+Color the different nucleotides different colors, for example:
+<blockquote>
+<b>Select... Residue... DA</b>
+<br><b>Actions... Color... blue</b>
+</blockquote>
+Analogously, color DC residues cyan, DG residues yellow, and
+DT residues magenta.
+Clear the selection with <b>Select... Clear Selection</b> or by 
+<a href="../selection.html#pickselect">picking</a> (Ctrl-click) in empty space.
+</p><p>
+Next, try some different <a href="../representation.html">display styles</a>, 
+or representations. 
+</p>
+<blockquote>
+ <b>Actions... Atoms/Bonds... sphere</b>
+ <br><b>Select... Chain... A</b>
+ <br><b>Actions... Atoms/Bonds... ball & stick</b>
+ <br><b>Select... Clear Selection</b>
+ <br><b>Actions... Atoms/Bonds... stick</b>
+</blockquote>
+<img class="clRight" src="ribbon.png">
+<p>
+Showing ribbon automatically hides the
+<a href="../../ContributedSoftware/ribbonstyle/ribbonstyle.html#mainchain">mainchain</a> (backbone) atoms.
+</p>
+<blockquote>
+ <b>Actions... Ribbon... show</b>
+ <br><b>Actions... Ribbon... edged</b>
+ <br><b>Actions... Ribbon... rounded</b>
+</blockquote>
+<p>
+DNA can be shown with special
+<a href="../../ContributedSoftware/nucleotides/nucleotides.html">nucleotide 
+objects</b></a>.  We will show &ldquo;lollipops,&rdquo; boxes, and a ladder.
+<blockquote>
+<b>Actions... Atoms/Bonds... nucleotide objects... settings...</b>
+<br><br>
+In the resulting <b>Nucleotides</b> dialog:
+  <ol>
+  <li>set <b>Show side (sugar/base) as</b> to <b>tube/slab</b>
+  <li>set <b>Show base orientation</b> to <b>false</b>
+  <li>click <b>Slab Style</b> tab, set slab style to <b>skinny</b>
+  <li>click <b>Slab Options</b> tab, set <b>Slab object</b> to <b>ellipsoid</b>
+  <li>click <b>Apply</b>; these are the &ldquo;lollipops&rdquo;
+  </ol>
+</blockquote>
+Nucleotide settings can be applied to just the selected residues (not
+necessarily all of the DNA).  One way to select specific residues is in the
+<a href="../../ContributedSoftware/multalignviewer/framemav.html" 
+target="_top"><b>Sequence</b></a> tool: 
+<blockquote>
+<b>Favorites... Sequence</b>
+</blockquote>
+Show the sequence of chain A and select one or a few residues 
+in the sequence window with the mouse; this selects the corresponding
+part of the structure. <b>Quit</b> from the sequence window.
+In the <b>Nucleotides</b> dialog 
+(also under <b>Tools... Depiction</b> in the menu):
+  <ol>
+  <li>set <b>Show base orientation</b> to <b>true</b>
+  <li>set <b>Slab object</b> to <b>box</b>
+  <li>click <b>Apply</b>; base orientations are shown with &ldquo;bumps&rdquo;
+  </ol>
+Clear the selection 
+(<b>Select... Clear Selection</b> or Ctrl-click in empty space)
+and use <b>Nucleotides</b> to show the DNA as a ladder:
+  <ol>
+  <li>set <b>Show side (sugar/base) as</b> to <b>ladder</b>
+  <li>in the <b>Ladder Options</b>, set <b>Rung radius</b> to 
+   <b>0.3</b> &Aring;
+  <li>click <b>OK</b> (which will also dismiss the dialog)
+  </ol>
+To return to more general display styles, turn off the nucleotide objects:
+<blockquote>
+ <b>Actions... Atoms/Bonds... nucleotide objects... off</b>
+</blockquote>
+Hide the ribbons and show everything as ball-and-stick:
+<blockquote>
+ <b>Actions... Ribbon... hide</b><br>
+ <b>Actions... Atoms/Bonds... ball & stick</b>
+</blockquote>
+<img class="clRight" src="surfmain.png">
+</p><p>
+Finally, have some fun with surfaces.  There are
+<a href="../midas/surface.html#surfcats">built-in categories</a>
+within structures such as <b>main</b> and <b>ligand</b>;
+when nothing is <a href="../selection.html">selected</a>,
+<b>Actions... Surface... show</b> displays the surface of <b>main</b>.
+<blockquote>
+ <b>Actions... Surface... show</b>
+ <br><b>Actions... Surface... hide</b>
+ <br><b>Select... Structure... ligand</b>
+ <br><b>Actions... Surface... show</b>
+ <br><b>Actions... Surface... mesh</b>
+</blockquote>
+Surface color can be specified separately from
+the colors of the underlying atoms.  
+The ligand surface is tan and white because the original model color (tan)
+is used for surfaces of atoms not explicitly recolored by the user, and above, 
+only the carbon atoms were changed to white.
+With the ligand still selected,
+choose <b>Actions... Color... all options...</b> to open the
+<a href="../coloractions.html"><b>Color Actions</b></a> dialog.
+In that dialog,
+ <ol>
+ <li>change the <b>Coloring applies to</b> (target) setting to <b>surfaces</b>
+ <li>click <b>red</b>
+ <li>click <b>Close</b> (which will automatically reset the coloring target 
+ back to <b>all of the above</b>)
+ </ol>
+Clear the selection, change back to a solid surface,
+and then undisplay the surface:
+<blockquote>
+ <b>Select... Clear Selection</b>
+ <br><b>Actions... Surface... solid</b>
+ <br><b>Actions... Surface... hide</b>
+</blockquote>
+<img class="clRight" src="surfpart.png">
+As an example of a more complicated selection process, show the surface
+of the adenine and thymine deoxynucleotides in chain B only:
+<blockquote>
+ <ol>
+ <li>change the selection mode:  <b>Select... Selection Mode... append</b>
+ <li><b>Select... Residue... DA</b>
+ <li><b>Select... Residue... DT</b>
+ <li>change the selection mode:  <b>Select... Selection Mode... intersect</b>
+ <li><b>Select... Chain... B</b>
+ <li><b>Actions... Surface... show</b>
+ </ol>
+</blockquote>
+To prepare for any subsequent operations, restore the selection mode
+and clear the selection:
+ <blockquote>
+ <b>Select... Selection Mode... replace</b>
+ <br><b>Select... Clear Selection</b>
+ (or Ctrl-click in empty space)
+</blockquote>
+The <a href="../framecommand.html" target="_top">command</a> equivalent
+is much more concise, but requires some knowledge
+of the <a href="../midas/frameatom_spec.html" target="_top">atom
+specification syntax</a>:
+<blockquote>
+<i>Command</i>: <b><a href="../midas/surface.html">surf</a> :da.b,dt.b</b>
+</blockquote>
+</p><p>
+Sometimes it is helpful to make a surface transparent:
+ <blockquote>
+ <b>Actions... Surface... transparency... 50%</b>
+ </blockquote>
+Choose <b>File... Quit</b> from the menu to terminate the Chimera session.
+</p>
+<hr>
+<address>meng-at-cgl.ucsf.edu / April 2015</address>
+</body></html>

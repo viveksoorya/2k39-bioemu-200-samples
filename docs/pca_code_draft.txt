@@ -1,0 +1,20 @@
+Pca analysis using Python
+
+what are the dimensions here? A dimension is vector of motion; since there are 3N degrees of freedom, where N is the number of atoms, there are 3N dimensions, not 3.
+
+Each atom has its own degrees of motion and rotation. This makes the motion of the molecule complex. There might be use cases to finding a handful few axes along which the bulk of the 'net' motion is happening.
+
+Motion of an atom can be gleaned from the variation in the coordinates of the atom over all frames. 
+You can get such variation for all atoms but how does that get you to reduced dimensions.
+All atoms are necessary and all dimensions of all atoms are necessary.
+
+would covariance help and how?
+
+You get a matrix of information on how every atoms moves along every dimension is relative to every other atoms movement along every dimension. In other words, how atoms move relative to each other in each of their N 3d spaces.
+
+This information gets us only so far as understanding the relative constrained motion, that is, how much each atom's motion along a particular axis is restricted by other atoms motions along each of their three axes. If the covariance is 0, they are not affected by each other, if the covariance is negative or positive they are affected by each other: if positive, they are likely to both move along each of specific axis each and if negative, motion of an atom along its axis along positive direction would encourage motion of the other atom along its axis along negative direction and vice versa.
+
+From this, we get the information about constraits;
+If we can somehow see the cumulative effect of these constraints to see where the maximum positive interference of motion is happening that would get us our principal component.
+
+bluntly, how does diagonalization help with this?

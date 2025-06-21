@@ -1,0 +1,1 @@
+flatpak run edu.ucsf.rbvi.ChimeraX

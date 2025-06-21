@@ -1,0 +1,416 @@
+<!--
+--- UCSF Chimera Copyright ---
+Copyright (c) 2015-2017 Regents of the University of California.
+All rights reserved.  This software provided pursuant to a
+license agreement containing restrictions on its disclosure,
+duplication and use.  This notice must be embedded in or
+attached to all copies, including partial copies, of the
+software or any revisions or derivations thereof.
+--- UCSF Chimera Copyright ---
+-->
+
+<html>
+<head>
+<TITLE>Molecular Dynamics Simulation</TITLE>
+<style type="text/css">
+A.nounder:link {text-decoration: none}
+A.nounder:visited {text-decoration: none}
+A.nounder:hover {text-decoration: underline; color: red;}
+</style>
+</head>
+<body>
+<a name="top"></a>
+<h3>Molecular Dynamics Simulation <img src="mdicon.png"></h3>
+<p>
+<b>Molecular Dynamics Simulation</b> is an interface to
+minimization and molecular dynamics routines provided by 
+<a href="http://dirac.cnrs-orleans.fr/MMTK/" target="_blank">MMTK</a>,
+which is included with Chimera.
+<a href="https://ambermd.org/" target="_blank"><b>Amber</b></a>
+parameters are used for standard residues, and Amber's
+<a href="https://ambermd.org/antechamber/antechamber.html"
+target="_blank"><b>Antechamber</b></a> module (also included with Chimera)
+is used to assign parameters to nonstandard residues.
+</p><p>
+Thanks to Victor Mu&ntilde;oz Robles and Jean-Didier Mar&eacute;chal
+(The Computational Biotechnological Chemistry Team,
+Universitat Aut&ograve;noma de Barcelona; funding from 
+Ministerio de Ciencia e Innovaci&oacute;n, Generalitat de Catalunya)
+for implementing this tool.  See also:
+<a href="../minimize/minimize.html"><b>Minimize Structure</b></a>,
+<a href="../movie/framemovie.html" target="_top"><b>MD Movie</b></a>,
+the <a href="https://sophia-web.appspot.com/" target="_blank">Sophia</a>
+plugin to Chimera
+</p>
+<table align=center border=1 cellpadding=5 cellspacing=0
+bgcolor="#f0f0f0" width="80%">
+<tr><td>
+<!-- 
+as per
+https://plato.cgl.ucsf.edu/pipermail/chimera-users/2020-September/017234.html 
+-->
+<font size="+1">
+This tool was developed for teaching about molecular dynamics
+using simulations on small molecules.
+Compared to dedicated packages for molecular simulation 
+(<a href="https://ambermd.org/" target="_blank">Amber</a>,
+<a href="http://www.gromacs.org/" target="_blank">Gromacs</a>, others), 
+the calculations are relatively slow and parameter options few. 
+Although it may be useful for limited sampling and relaxation of macromolecular
+structures and complexes, this tool is not suitable for long simulations
+on macromolecules, such as needed to predict changes in stability or 
+binding energy. For such applications, other packages should be used instead.
+</td></tr>
+</table>
+<p>
+There are <a href="../../UsersGuide/extension.html">several ways to start</a>
+<b>Molecular Dynamics Simulation</b>, a tool in the <b>MD/Ensemble
+Analysis</b> category.
+</p><p>
+<b>Select model</b>:
+<a name="chosen">
+The model of interest should be chosen by clicking to highlight its name
+in the list of models.</a>
+All of the atoms for simulation should be included in this model;
+any other models will be ignored.
+</p><p>
+The dialog has four tabbed sections, in order of typical use:
+<ul>
+<li><a href="#prep"><b>Prep Structure</b></a> 
+- structure cleanup and association with force field parameters
+<li><a href="#solvation"><b>Solvation</b></a> 
+- adding solvent and/or counterions to the system, 
+setting box size for periodic boundary conditions
+<li><a href="#constraints"><b>Constraints Etc.</b></a>
+- constraints and force field options
+<li><a href="#run"><b>Run Parameters</b></a> 
+- parameters for minimization, molecular dynamics (MD) equilibration, and
+MD production; initiating the calculations
+</ul>
+Only one section is shown at a time, and clicking the tab for another
+brings it to the front.
+</p>
+
+<h3><a href="#top" class="nounder"><b>&larr;</b></a>
+<a name="prep"><b>Prep Structure</b></a></h3>
+<p>
+Structure preparation is the same as for
+<a href="../minimize/minimize.html"><b>Minimize Structure</b></a>
+and consists mainly of running 
+<a href="../dockprep/dockprep.html"><b>Dock Prep</b></a>
+to perform several tasks to prepare the system for energy calculations.
+These tasks may include calling 
+<a href="../addh/addh.html"><b>AddH</b></a> to add hydrogens and
+<a href="../addcharge/addcharge.html"><b>Add Charge</b></a> to associate 
+atoms with partial charges and other
+<a href="../minimize/minimize.html#parameters">force field parameters</a>.
+</ul>
+One of the following should be chosen before 
+<a href="../dockprep/dockprep.html"><b>Dock Prep</b></a>
+is started:
+<ul>
+<li><b>Memorize options chosen in subsequent dialogs</b> (default)
+- save the settings of  
+<a href="../dockprep/dockprep.html"><b>Dock Prep</b></a>
+and further tools it calls to prepare the structure; 
+the settings are saved in the
+<a href="../../UsersGuide/preferences.html#preffile"><b>preferences</b> file</a>
+for future uses of <b>Molecular Dynamics Simulation</b>
+or <a href="../minimize/minimize.html"><b>Minimize Structure</b></a>
+<li><b>Use previously memorized options, if any</b>
+- use settings saved with the preceding option in a prior use of 
+<b>Molecular Dynamics Simulation</b>
+or <a href="../minimize/minimize.html"><b>Minimize Structure</b></a>
+<li><b>Neither memorize nor use memorized options</b>
+- do not use previously saved settings; show the dialogs so that
+settings can be chosen explicitly for the current calculation,
+but do not save the settings
+</ul>
+<p>
+See the <a href="../minimize/minimize.html"><b>Minimize Structure</b></a>
+documentation for details on 
+<a href="../minimize/minimize.html#parameters">force field parameters</a>
+and associated
+<a href="../minimize/minimize.html#limitations">limitations</a>.
+</p>
+
+<h3><a href="#top" class="nounder"><b>&larr;</b></a>
+<a name="solvation"><b>Solvation</b></a></h3>
+<p>
+Buttons are provided to add solvent and counterions, if desired, by running the
+<a href="../solvate/solvate.html"><b>Solvate</b></a> and
+<a href="../addions/addions.html"><b>Add Ions</b></a> tools, respectively.
+</p><p>
+<a name="pbc"></a>
+<b>Periodic Boundary Conditions</b> should only be used when a solvent box
+has been added. In that case, the &ldquo;rgn size&rdquo; reported by
+<a href="../solvate/solvate.html"><b>Solvate</b></a>
+in the <a href="../../UsersGuide/reply.html"><b>Reply Log</b></a>
+can be entered as the dimensions of the (orthorhombic) periodic box.
+Alternatively, checking the <b>Automatic box size</b> option will use the
+bounding box of the <a href="#chosen">chosen model</a> along X, Y, and Z 
+plus 2 &Aring; padding on all sides.
+The automatic box size will be reported as the &ldquo;universe size&rdquo; 
+in the <a href="../../UsersGuide/reply.html"><b>Reply Log</b></a> when the
+calculations are <a href="#run">run</a>.
+</p>
+
+<h3><a href="#top" class="nounder"><b>&larr;</b></a>
+<a name="constraints"><b>Constraints Etc.</b></a></h3>
+<ul>
+<!--
+<li><a href="http://dirac.cnrs-orleans.fr/Manuals/MMTK/mmtk.html#fixed-atoms"
+target="_blank"><b>Fixed Atoms</b></a> specifies
+-->
+<li><b>Fixed Atoms</b> specifies
+whether to freeze some of the atoms in place during the calculations.
+Atoms to freeze in place are indicated by
+<a href="../../UsersGuide/selection.html">selection</a>, either those
+<b>selected</b> or <b>unselected</b> when the <b>Set</b> button is clicked.
+However, all atoms in the <a href="#chosen">chosen model</a>
+will be included in the energy calculations, regardless of whether 
+they are held fixed. (Only the
+<a href="../../UsersGuide/midas/minimize.html"><b>minimize</b></a> command 
+with <a href="../../UsersGuide/midas/minimize.html#fragment"><b>fragment 
+true</b></a> allows excluding some of the atoms in a model 
+from energy calculations.)
+<!--
+<li><b><a href="http://dirac.cnrs-orleans.fr/Manuals/MMTK/modules.html#MMTK.Dynamics.TranslationRemover"
+target="_blank">Translation remover</a></b>: 
+-->
+<li><b>Translation remover</b>:
+start [<i>i</i>] end [<i>j</i>] apply every [<i>N</i>] steps</b>
+- whether to subtract out global translational motion during MD, and if so, at
+which steps; default the first, third, fifth, <i>etc.</i> through the end 
+    (the end value <i>j</i> can be left blank)
+<!--
+<li><b><a href="http://dirac.cnrs-orleans.fr/Manuals/MMTK/modules.html#MMTK.Dynamics.RotationRemover"
+target="_blank">Rotation remover</a></b>:
+-->
+<li><b>Rotation remover</b>:
+start [<i>i</i>] end [<i>j</i>] apply every [<i>N</i>] steps</b>
+- whether to subtract out global rotational motion during MD, and if so, at
+which steps; default the first, third, fifth, <i>etc.</i> through the end 
+    (the end value <i>j</i> can be left blank)
+</ul>
+<b>ForceField Options</b>
+<blockquote>
+<p>
+** If <a href="#pbc">periodic boundary conditions</a> are used, no
+distance cutoff <i>d</i> should exceed half of the smallest box dimension. **
+</p>
+  <b>Electrostatic interaction method</b>:
+  <ul>
+  <li> <b>default</b> - MMTK default; in MMTK 2.7.9, <b>Ewald</b> (see below)
+  if <a href="#pbc">periodic boundary conditions</a> are used,
+  otherwise <b>direct</b>
+  <li> <b>direct</b> - no cutoff; 
+  all pairs, subject to the minimum image convention if 
+  <a href="#pbc">periodic boundary conditions</a> are used
+  <li> <b>cutoff [<i>d</i>] &Aring;</b> 
+  - pairs within the distance cutoff, plus a charge-neutralizing 
+  surface charge density around the cutoff sphere
+  <li> <b>Ewald</b> - Ewald summation, 
+  applies only when <a href="#pbc">periodic boundary conditions</a> are used
+<!--
+According to http://structure.usc.edu/mmtk/MMTK_20.html , this uses
+optionally specified parameters "beta", "real_cutoff", and "reciprocal_cutoff"
+for which defaults are conservative and may produce excessive calculation times.
+-->
+  <li> <b>screened [<i>d</i>]&nbsp;&Aring; beta&nbsp;[<i>&beta;</i>]</b> - 
+  the real-space part of the Ewald sum (no reciprocal sum) with a 
+  charge-neutralizing surface charge density around the cutoff sphere;
+  requires input of the real-space cutoff distance <i>d</i> and 
+  the Ewald screening parameter <i>&beta;</i>. The cutoff distance <i>d</i>
+  should be significantly larger than 1/<i>&beta;</i>.
+  </ul> 
+<b>Lennard-Jones interaction method</b>:
+  <ul>
+  <li> <b>default</b> - MMTK default; in MMTK 2.7.9, <b>direct</b> (see below)
+  <li> <b>direct</b> - no cutoff;
+  all pairs, subject to the minimum image convention if 
+  <a href="#pbc">periodic boundary conditions</a> are used
+  <li> <b>cutoff [<i>d</i>] &Aring;</b>
+  - pairs within the distance cutoff
+  </ul>
+</blockquote>
+
+<h3><a href="#top" class="nounder"><b>&larr;</b></a>
+<a name="run"><b>Run Parameters</b></a></h3>
+
+<p>
+<b>Settings</b> are shown separately for the four subsections:
+  <ul>
+  <li><a href="#minimization"><b>minimization</b></a>
+  <li><a href="#equilibration"><b>equilibration</b></a>
+  <li><a href="#production"><b>production</b></a>
+  <li><a href="#other"><b>other runtime options</b></a>
+  </ul>
+** Regardless of which subsection is shown, clicking <b>Run</b> will initiate
+running all stages of the calculation (sequentially), so care should be taken
+to set the desired parameters in all subsections beforehand. **
+</p>
+
+<h4><a href="#run" class="nounder"><b>&larr;</b></a>
+<a name="minimization"><b>Minimization</b></a></h4>
+
+<ul>
+<li><b>Minimize before MD</b>
+- whether to include minimization in a run
+<p>
+<!--
+<a href="http://dirac.cnrs-orleans.fr/Manuals/MMTK/mmtk.html#energy-minimization"
+target="_blank"><b><i>Steepest descent</i></b></a> minimization
+-->
+<b><i>Steepest descent</i></b> minimization
+is performed first to relieve highly unfavorable clashes, followed by 
+<!--
+<a href="http://dirac.cnrs-orleans.fr/Manuals/MMTK/mmtk.html#energy-minimization"
+target="_blank"><b><i>conjugate gradient</i></b></a> minimization,
+-->
+<b><i>conjugate gradient</i></b> minimization,
+which is much slower but more effective at reaching an energy minimum 
+after severe clashes have been relieved.
+Energies (kJ/mol) are reported in the
+<a href="../../UsersGuide/reply.html"><b>Reply Log</b></a>.
+<!-- as per Chimera trac ticket #12394 -->
+**<b>Step numbers reported by MMTK are 2 greater than the actual numbers 
+of minimization steps performed</b>. The additional &ldquo;steps&rdquo;
+are not minimization steps but operations required to obtain gradient 
+values and updated coordinates.**
+</p>
+<li><b>Steepest descent steps</b> (default <b>100</b>)
+- number of steps of steepest descent minimization to perform before
+any conjugate gradient minimization
+<li><b>Steepest descent step size (&Aring;)</b> (default <b>0.02</b>) 
+- initial step length for steepest descent minimization
+<li><b>Conjugate gradient steps</b> (default <b>10</b>)
+- number of steps of conjugate gradient minimization to perform after
+finishing any steepest descent minimization
+<li><b>Conjugate gradient step size (&Aring;)</b> (default <b>0.02</b>) 
+- initial step length for conjugate gradient minimization
+</ul>
+
+<h4><a href="#run" class="nounder"><b>&larr;</b></a>
+<a name="equilibration"><b>Equilibration</b></a></h4>
+
+<ul>
+<li><b>Equilibrate [<i>N</i>] steps</b>
+- whether to include equilibration MD in a run, and if so, how many steps
+(default <b>5000</b>)
+<br><br>
+<li style="list-style-type:none"><b>Temperature control method</b>:
+  <ul>
+<!--
+  <li><a href="http://dirac.cnrs-orleans.fr/Manuals/MMTK/modules.html#MMTK.Dynamics.Heater" 
+  target="_blank"><b>Heater</b></a> (default)
+-->
+  <li><b>Heater</b> (default)
+  - rescale velocities to increase temperature gradually
+    <ul>
+    <li><b>temp1&nbsp;(K)&nbsp;[<i>T1</i>]&nbsp;temp2&nbsp;(K)&nbsp;[<i>T2</i>] 
+     gradient&nbsp;(K/ps)&nbsp;[<i>g</i>]</b> - set heater initial and target
+     temperatures (default <b>0</b> and <b>298</b> K, respectively) and
+     gradient (default <b>10</b> K/ps)
+    <li><b>start [<i>i</i>] end [<i>j</i>] apply every [<i>N</i>] steps</b>
+    - at which steps to apply the heater: 
+    default the first, third, fifth, <i>etc.</i> through the end
+    (the end value <i>j</i> can be left blank)
+    </ul>
+<!--
+  <li><a href="http://dirac.cnrs-orleans.fr/Manuals/MMTK/modules.html#MMTK.Dynamics.VelocityScaler"
+  target="_blank"><b>Velocity scaler</b></a>
+-->
+  <li><b>Velocity scaler</b>
+  - rescale velocities to attain a target temperature;
+  usually done during initial equilibration
+    <ul>
+    <li><b>temp&nbsp;(K)&nbsp;[<i>T</i>] 
+    allowed&nbsp;deviation&nbsp;[<i>w</i>]</b>
+    - set target temperature (default <b>298</b> K) and allowed deviation
+    in either direction before rescaling takes place (default <b>0</b> K)
+    <li><b>start [<i>i</i>] end [<i>j</i>] apply every [<i>N</i>] steps</b>
+    - at which steps to rescale velocities: 
+    default the first, third, fifth, <i>etc.</i> through the end
+    (the end value <i>j</i> can be left blank)
+    </ul>
+  </ul>
+<!--
+<li><b><a href="http://dirac.cnrs-orleans.fr/Manuals/MMTK/modules.html#MMTK.Dynamics.BarostatReset"
+target="_blank">Barostat reset</a></b>:
+-->
+<li><b>Barostat reset</b>:
+start [<i>i</i>] end [<i>j</i>] apply every [<i>N</i>] steps</b>
+- whether to reset the barostat coordinate to zero (for initial equilibration
+of systems in the NPT ensemble), and if so, at which steps:
+default the first, third, fifth, <i>etc.</i> through the end
+    (the end value <i>j</i> can be left blank)
+<li><b>Time step (fs)</b> (default <b>1</b>)
+<li><b>Output trajectory file</b>
+- output trajectory file; frequency of saving is set in the
+<a href="#other"><b>other runtime options</b></a>
+<li><b>Output restart-trajectory file</b>
+- output restart file, needed as input to the 
+<a href="#production">production phase</a>;
+frequency of saving is set in the
+<a href="#other"><b>other runtime options</b></a>
+</ul>
+
+<h4><a href="#run" class="nounder"><b>&larr;</b></a>
+<a name="production"><b>Production</b></a></h4>
+
+<ul>
+<li><b>Include production phase [<i>N</i>] steps</b>
+- whether to include production MD in a run, and if so, how many steps
+(default <b>5000</b>)
+<br><br>
+<li><b>Input restart-trajectory file (from previous equilibration or 
+production)</b> - restart file from previous MD (required), 
+automatically kept the same as the restart file specified at the 
+bottom of the <a href="#equilibration">equilibration</a> section
+<!--
+<li><b><a href="http://dirac.cnrs-orleans.fr/Manuals/MMTK/modules.html#MMTK.Environment.AndersenBarostat"
+target="_blank">Andersen barostat</a></b>: 
+-->
+<li><b>Andersen barostat</b>: 
+pressure (bars) [<i>P</i>] relaxation time [<i>&tau;<sub>P</sub></i>]</b>
+- whether to keep pressure constant, and if so, the target pressure
+(default <b>1.0132</b> bars = 1 atm) and relaxation time (default <b>1.5</b> ps)
+<!--
+<li><b><a href="http://dirac.cnrs-orleans.fr/Manuals/MMTK/modules.html#MMTK.Environment.NoseThermostat"
+target="_blank">Nos&eacute; thermostat</a></b>:
+-->
+<li><b>Nos&eacute; thermostat</b>:
+temperature (K) [<i>T</i>] relaxation time [<i>&tau;<sub>T</sub></i>]</b>
+- whether to keep temperature constant, and if so, the target temperature
+(default <b>298</b> K) and relaxation time (default <b>0.2</b> ps)
+<li><b>Time step (fs)</b> (default <b>1</b>)
+<li><b>Output trajectory file</b>
+- output trajectory file; frequency of saving is set in the
+<a href="#other"><b>other runtime options</b></a>
+<li><b>Output restart-trajectory file</b>
+- output restart file; optional, but required as input for any 
+subsequent MD runs starting from the end of this production run;
+frequency of saving is set in the
+<a href="#other"><b>other runtime options</b></a>
+</ul>
+
+<h4><a href="#run" class="nounder"><b>&larr;</b></a>
+<a name="other"><b>Other Runtime Options</b></a></h4>
+
+<ul>
+<li><b>Use multiple CPUs</b> - whether to use multiple CPUs (if available)
+<li><b>Save once every [<i>N</i>] steps</b>
+- how often to write to trajectory output files (default every <b>10</b> steps)
+<li><b>&ldquo;Live&rdquo; trajectory</b>
+- whether to update the structure in Chimera as the calculation progresses
+</ul>
+
+After the completion of any MD run, the (cumulative) trajectory will be
+opened automatically in the
+<a href="../movie/framemovie.html" target="_top"><b>MD Movie</b></a> tool
+for playback, recording, and/or various analyses.
+<hr>
+<address>UCSF Computer Graphics Laboratory / May 2020</address>
+</body>
+</html>

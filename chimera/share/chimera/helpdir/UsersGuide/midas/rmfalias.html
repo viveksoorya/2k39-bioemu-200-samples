@@ -1,0 +1,62 @@
+<!--
+--- UCSF Chimera Copyright ---
+Copyright (c) 2014 Regents of the University of California.
+All rights reserved.  This software provided pursuant to a
+license agreement containing restrictions on its disclosure,
+duplication and use.  This notice must be embedded in or
+attached to all copies, including partial copies, of the
+software or any revisions or derivations thereof.
+--- UCSF Chimera Copyright ---
+-->
+
+<html><head>
+<title>rmfalias</title>
+</head><body>
+<font size="-1">
+<a href="../framecommand.html" target="_top">Chimera Commands Index</a>
+</font>
+
+<h3><a href="usageconventions.html">Usage</a>:
+ <BR><b>rmfalias</b>
+[&nbsp;depth&nbsp;<i>N</i>&nbsp;]
+[&nbsp;skip_prefix&nbsp;<i>M</i>&nbsp;]
+[&nbsp;rmf&nbsp;<i>filename</i>&nbsp;]
+</h3>
+<p>
+The <b>rmfalias</b> command creates command-line specifiers 
+for sets of nodes in <a href="https://integrativemodeling.org/rmf/format.html"
+target="_blank">Rich Molecular Format</a> (RMF)
+currently open in <a href="../rmfviewer.html"><b>RMF Viewer</b></a>.
+This allows acting on the node sets with
+<a href="../framecommand.html" target="_top">Chimera commands</a>.
+The resulting aliases are of the form:
+<blockquote>
+<i>filename</i>/<i>nodename1</i>/<i>nodename2</i>/<i>nodename3</i>
+</blockquote>
+with up to <i>N</i> levels aliased
+(default <b>4</b>, up to the third level of nodes) and
+the names of <i>M</i> levels omitted from the start of the alias
+(default <b>1</b>, omitting <i>filename</i>).
+The node names are read from the RMF file and shown in the
+<a href="../rmfviewer.html"><b>RMF Viewer</b></a> interface.
+Certain characters such as dots (periods) and colons are stripped.
+The resulting aliases are listed in the 
+<a href="../reply.html"><b>Reply Log</b></a>.
+</p><p>
+For example, nodeset aliases for a file named &ldquo;myfile.rmf3&rdquo;
+could include &ldquo;P0/Rpb1&rdquo; and &ldquo;P0/Rpb1/beads&rdquo;
+(<i>N</i>&ge;4, <i>M</i>=1). Caution is warranted in skipping more than
+1 level of prefix (<i>M</i>&gt;1), as that could produce non-unique
+(duplicate) alias strings.  In the case of duplicates,
+only the last of the potential assignments will apply.
+</p><p>
+Option keywords for <b>rmfalias</b>
+can be truncated to unique strings, and their case does not matter.
+The <b>rmf</b> keyword can be used to limit alias assignment to
+<i>filename</i> when more than one RMF file is open.
+The path to the file should not be included in <i>filename</i>.
+</p><p>
+See also:
+<b><A href="alias.html">alias</A></b>
+</p>
+</body></html>

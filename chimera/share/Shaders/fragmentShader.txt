@@ -1,0 +1,95 @@
+#version 120
+
+#ifdef USE_LIGHTING
+varying vec3 N;
+varying vec3 v;
+#endif
+
+#ifdef USE_TEXTURE_1D
+uniform sampler1D tex1d;
+#endif
+
+#ifdef USE_TEXTURE_2D
+uniform sampler2D tex2d;
+#endif
+
+#ifdef USE_TEXTURE_3D
+uniform sampler3D tex3d;
+#endif
+
+#ifdef USE_SHADOWS
+uniform sampler2DShadow shadowMap;
+#endif
+
+void main (void)
+{
+  vec4 color = gl_Color;
+
+#ifdef USE_TEXTURE_1D
+  color *= texture1D(tex1d, gl_TexCoord[0].s);
+#endif
+
+#ifdef USE_TEXTURE_2D
+  color *= texture2D(tex2d, gl_TexCoord[0].st);
+#endif
+
+#ifdef USE_TEXTURE_3D
+  color *= texture3D(tex3d, gl_TexCoord[0].stp);
+#endif
+
+#ifdef USE_LIGHTING
+
+  const int kl = 1;  // Chimera key light is 1.
+  const int fl = 0;  // Chimera fill light is 0.
+  const int bl = 2;  // Chimera back light is 2.
+  vec3 N1 = normalize(N);
+  vec3 L = normalize(gl_LightSource[kl].position.xyz);  // Light at infinity.
+  vec3 Lf = normalize(gl_LightSource[fl].position.xyz); // Light at infinity.
+  vec3 Lb = normalize(gl_LightSource[bl].position.xyz); // Light at infinity.
+  vec3 E = normalize(-v);      // In eye coordinates eye position is (0,0,0).
+#ifdef USE_TWO_SIDED_LIGHTING
+  N1 *= (gl_FrontFacing ? 1.0 : -1.0);
+#endif
+  vec3 R = normalize(-reflect(L,N1)); 
+
+#ifdef USE_SHADOWS
+  float shadow = shadow2DProj(shadowMap, gl_TexCoord[1]).r;
+#else
+  float shadow = 1;
+#endif
+
+  // diffuse
+  vec4 Idiff = color * (gl_LightSource[kl].diffuse * max(dot(N1,L),0.0) * shadow
+                         + gl_LightSource[fl].diffuse * max(dot(N1,Lf),0.0)
+                         + gl_LightSource[bl].diffuse * max(dot(N1,Lb),0.0));
+
+  // specular
+  vec4 Ispec = gl_FrontLightProduct[kl].specular 
+                  * pow(max(dot(R,E),0.0),0.3*gl_FrontMaterial.shininess)
+		  * shadow;
+
+  // scene
+  vec4 Iscene = color * gl_LightModel.ambient;
+
+  // total color
+  vec3 Ifrag = Iscene.rgb + Idiff.rgb + Ispec.rgb;
+
+#else	// not USE_LIGHTING
+  vec3 Ifrag = color.rgb;
+#endif	// USE_LIGHTING
+
+#ifdef USE_FOG
+  // fog
+  float fog = clamp((gl_FogFragCoord - gl_Fog.start) * gl_Fog.scale, 0.0, 1.0);
+  Ifrag = mix(Ifrag, gl_Fog.color.rgb, fog);
+#endif
+
+  // transparency
+  float a = color.a;
+#ifdef USE_ANGLE_DEPENDENT_TRANSPARENCY
+  a = 1.0 - pow(max(1.0-a,0.0), 1.0/max(abs(N1.z),0.01));
+#endif
+
+  // final color
+  gl_FragColor = vec4(Ifrag, a);
+}

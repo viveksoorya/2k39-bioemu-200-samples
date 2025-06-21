@@ -1,0 +1,160 @@
+<!--
+--- UCSF Chimera Copyright ---
+Copyright (c) 2015 Regents of the University of California.
+All rights reserved.  This software provided pursuant to a
+license agreement containing restrictions on its disclosure,
+duplication and use.  This notice must be embedded in or
+attached to all copies, including partial copies, of the
+software or any revisions or derivations thereof.
+--- UCSF Chimera Copyright ---
+-->
+
+<html><head>
+<title>Image Tutorial: Ribbon Styles</title>
+
+<style type="text/css">
+A.nounder:link {text-decoration: none}
+A.nounder:visited {text-decoration: none}
+A.nounder:hover {text-decoration: underline; color: red;}
+img.clRight {float: right; clear: right; border: 1px solid black; margin: 8px}
+img.border {border: 1px solid black}
+table.clRight {float: right; clear: right; margin: 8px}
+</style>
+</head><body>
+<a name="top"></a>
+
+<font size="-1">
+<a href="../frametut.html" target="_top">Chimera Tutorials Index</a>
+</font>
+
+<h2>Image Tutorial: Ribbon Styles</h2>
+
+<table class="clRight">
+<tr><td align="center"><b>smooth</b> ribbons except <b>edged</b> strands,
+<br>default lighting:</td></tr>
+<tr><td><a href="ribstyles-mix.png"><img class="border" 
+title="click for larger..." src="ribstyles-mix.png" width="350px"></td></tr>
+<tr><td align="center"><b>flat</b> ribbons, white insides,
+<br>default lighting:</td></tr>
+<tr><td><a href="ribstyles-flat.png"><img class="border" 
+title="click for larger..." src="ribstyles-flat.png" width="350px"></td></tr>
+<tr><td align="center"><b>flat</b> ribbons, ambient-only lighting:</td></tr>
+<tr><td><a href="ribstyles-ambient.png"><img class="border" 
+title="click for larger..." src="ribstyles-ambient.png" width="350px"></td></tr>
+<tr><td align="center"><b>smooth</b> ribbons, default lighting except 
+<br>decreased contrast and reflectivity:</td></tr>
+<tr><td><a href="ribstyles-contrast3-reflect5.png"><img class="border" 
+title="click for larger..." src="ribstyles-contrast3-reflect5.png" 
+width="350px"></td></tr>
+</table>
+
+<p>
+This tutorial shows just a few of the many possible combinations
+of ribbon styles and other display settings.
+See also: 
+<a href="../representation.html#ribbon">ribbons</a>,
+<a href="../print.html#tips">tips on preparing images</a>
+</p>
+
+<h3>Setup, Coloring</h3>
+<p>
+<a href="../startup.html">Start Chimera</a> and
+show the <a href="../chimerawindow.html#emulator"><b>Command Line</b></a>
+(for example, with <b>Favorites... Command Line</b>).
+Fetch Protein Data Bank entry
+<a href="https://www.rcsb.org/structure/2GBP" target="_blank">2gbp</a>: 
+<blockquote>
+<i>Command</i>: <b><a href="../midas/open.html">open</a> 2gbp</b>
+</blockquote>
+<a href="getting_started.html#moving">Move and scale</a> the structure 
+as you wish throughout the tutorial. 
+It contains an <i>E. coli</i> chemoreceptor protein bound to glucose.
+</p><p>
+Switch to white background and turn on black outlines:
+<blockquote>
+<i>Command</i>: <b><a href="../midas/set.html">set</a> bgColor white</b>
+<br>
+<i>Command</i>: <b><a href="../midas/set.html">set</a> silhouette</b>
+</blockquote>
+Show only the ligand atoms and adjust the coloring:
+<blockquote>
+<i>Command</i>: <b><a href="../midas/display.html">~disp</a></b>
+<br>
+<i>Command</i>: <b><a href="../midas/display.html">disp</a> ligand</b>
+<br>
+<i>Command</i>: <b><a href="../midas/color.html">color</a> gray coil</b>
+<br>
+<i>Command</i>: <b><a href="../midas/color.html">color</a> gold strand</b>
+<br>
+<i>Command</i>: <b><a href="../midas/color.html">color</a> dark cyan helix</b>
+<br>
+<i>Command</i>: <b><a href="../midas/color.html">color</a> byelement</b>
+<br>
+<i>Command</i>: <b><a href="../midas/color.html">color</a> white ligand & C</b>
+</blockquote>
+Resize the window as desired, either by dragging its lower right corner 
+with the mouse or by using the command
+<a href="../midas/windowsize.html"><b>windowsize</b></a>.
+The window dimensions define the aspect ratio (width:height)
+of output images, but image resolution (pixel dimensions)
+can be specified independently when an image is saved. 
+</p>
+
+<h3>Ribbon Styles</h3>
+<p>
+The default ribbon style is <b>smooth</b> (<b>rounded</b>),
+but there are also <b>edged</b>, <b>flat</b> and potentially
+<a href="../../ContributedSoftware/ribbonstyle/ribbonstyle.html">custom</a>
+styles that can be used for parts or all of peptide chains:
+</p>
+<blockquote>
+<i>Command</i>: <b><a href="../midas/ribrepr.html">ribrep</a> edged</b>
+<br>
+<i>Command</i>: <b><a href="../midas/ribrepr.html">ribrep</a> smooth</b>
+<br>
+<i>Command</i>: <b><a href="../midas/ribrepr.html">ribrep</a> edged strand</b>
+<br>
+<i>Command</i>: <b><a href="../midas/ribrepr.html">ribrep</a> flat</b>
+</blockquote>
+<p>
+The insides of ribbons in protein helices can be colored differently:
+</p>
+<blockquote>
+<i>Command</i>: <b><a href="../midas/ribinsidecolor.html">ribinsidecolor</a> white</b>
+</blockquote>
+The result is similar to the &ldquo;flat ribbon&rdquo;
+<a href="../menu.html#menupresets">publication preset</a>.
+</p><p>
+To remove the separate inside coloring:
+</p>
+<blockquote>
+<i>Command</i>: <b><a href="../midas/ribinsidecolor.html">~ribinside</a></b>
+</blockquote>
+
+<h3>Lighting</h3>
+<p>
+The default lighting includes directional lights and shininess.
+To use ambient-only lighting instead:
+<blockquote>
+<i>Command</i>: <b><a href="../midas/lighting.html">light</a> mode ambient</b>
+</blockquote>
+Restore the <b>smooth</b> style and default lighting:
+<blockquote>
+<i>Command</i>: <b><a href="../midas/ribrepr.html">ribrep</a> smooth</b>
+<br>
+<i>Command</i>: <b><a href="../midas/lighting.html">light</a> restore
+"Chimera default"</b>
+</blockquote>
+The darkest areas can be lightened and the shiny highlights dimmed by
+decreasing the contrast (default 0.83) and reflectivity (default 1.0),
+respectively.
+<blockquote>
+<i>Command</i>: <b><a href="../midas/lighting.html">light</a> contrast 0.3</b>
+<br>
+<i>Command</i>: <b><a href="../midas/lighting.html">light</a> reflectivity 0.5</b>
+</blockquote>
+
+<hr>
+<address>meng-at-cgl.ucsf.edu / May 2015</address>
+</body>
+</html>
