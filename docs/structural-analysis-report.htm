@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>Structural (Matchmaker) Analysis Report</title>
+	<meta name="generator" content="LibreOffice 7.4.7.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="00:00:00"/>
+	<meta name="" content=""/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<style type="text/css">
+		td p { color: #222222; font-family: "Arial", sans-serif; text-align: left; margin-left: 0.79cm; margin-right: 0.79cm }
+		h1 { color: #2c3e50; margin-left: 0.79cm; margin-right: 0.79cm }
+		h1.cjk { font-family: "Arial", sans-serif }
+		h1.ctl { font-family: "Arial", sans-serif }
+		p { color: #222222; font-family: "Arial", sans-serif; margin-left: 0.79cm; margin-right: 0.79cm }
+		h2 { color: #2c3e50; margin-left: 0.79cm; margin-right: 0.79cm }
+		h2.cjk { font-family: "Noto Sans" }
+		h2.ctl { font-family: "FreeSans" }
+		pre { color: #222222; margin-left: 0.79cm; margin-right: 0.79cm; margin-top: 0.79cm; background: #eeeeee; border: none; padding: 0cm }
+		th p { color: #222222; font-family: "Arial", sans-serif; text-align: left; margin-left: 0.79cm; margin-right: 0.79cm; background: #e6ecf2 }
+	</style>
+</head>
+<body lang="en-IN" text="#222222" bgcolor="#f9f9f9" dir="ltr"><h1 class="western">
+Structural (matchmaker) analysis</h1>
+<pre style="margin-top: 0cm; margin-bottom: 0.79cm">Parameters:
+Reference structure: topology-1200-odd-atoms.pdb (#0)
+structure(s) to match: 2k39 (#1.1)
+Chain pairing: Best aligning pair of chains between reference and match structure
+Alignment algorithm: Needleman - Wunsch
+Matrix: BLOSUM-62; gap extension penalty: 1
+Include secondary structure
+score : yes, 30% residue similarity
+Scoring Matrix:</pre>
+<table cellpadding="2" cellspacing="2">
+	<thead>
+		<tr>
+			<th style="border: none; padding: 0cm"></th>
+			<th style="border: none; padding: 0cm"><p>H (Helix)</p>
+			</th>
+			<th style="border: none; padding: 0cm"><p>S (Strand)</p>
+			</th>
+			<th style="border: none; padding: 0cm"><p>O (Coil)</p>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th style="border: none; padding: 0cm"><p>Helix</p>
+			</th>
+			<td style="border: none; padding: 0cm"><p>6</p>
+			</td>
+			<td style="border: none; padding: 0cm"><p>-</p>
+			</td>
+			<td style="border: none; padding: 0cm"><p>-</p>
+			</td>
+		</tr>
+		<tr>
+			<th style="border: none; padding: 0cm"><p>Strand</p>
+			</th>
+			<td style="border: none; padding: 0cm"><p>-9</p>
+			</td>
+			<td style="border: none; padding: 0cm"><p>6</p>
+			</td>
+			<td style="border: none; padding: 0cm"><p>-</p>
+			</td>
+		</tr>
+		<tr>
+			<th style="border: none; padding: 0cm"><p>Coil</p>
+			</th>
+			<td style="border: none; padding: 0cm"><p>-6</p>
+			</td>
+			<td style="border: none; padding: 0cm"><p>-6</p>
+			</td>
+			<td style="border: none; padding: 0cm"><p>4</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<pre style="margin-top: 0cm; margin-bottom: 0.79cm">Gap opening penalties:
+Intra-helix: 18
+Intra-strand: 18
+Any other: 6
+compute secondary structure assignments: yes
+Show pairwise alignments: no
+Matching: Iterate by pruning long atom pairs until no pair exceeds: 2 angstroms, checked yes.
+After superposition, compute structure-based multiple sequence alignment: no</pre><h2 class="western" style="margin-top: 0cm; margin-bottom: 0.79cm">
+Observations:</h2>
+<table cellpadding="2" cellspacing="2">
+	<tr>
+		<th style="border: none; padding: 0cm"><p>Residue(s)</p>
+		</th>
+		<th style="border: none; padding: 0cm"><p>#0’s Secondary
+			Structure</p>
+		</th>
+		<th style="border: none; padding: 0cm"><p>#1.1’s Secondary
+			Structure</p>
+		</th>
+	</tr>
+	<tr>
+		<td style="border: none; padding: 0cm"><p>38 to 41</p>
+		</td>
+		<td style="border: none; padding: 0cm"><p>Coil</p>
+		</td>
+		<td style="border: none; padding: 0cm"><p>Strand</p>
+		</td>
+	</tr>
+	<tr>
+		<td style="border: none; padding: 0cm"><p>34</p>
+		</td>
+		<td style="border: none; padding: 0cm"><p>Coil</p>
+		</td>
+		<td style="border: none; padding: 0cm"><p>Strand</p>
+		</td>
+	</tr>
+	<tr>
+		<td style="border: none; padding: 0cm"><p>12 and 16</p>
+		</td>
+		<td style="border: none; padding: 0cm"><p>Coil</p>
+		</td>
+		<td style="border: none; padding: 0cm"><p>Strand</p>
+		</td>
+	</tr>
+	<tr>
+		<td style="border: none; padding: 0cm"><p>2 and 7</p>
+		</td>
+		<td style="border: none; padding: 0cm"><p>Coil</p>
+		</td>
+		<td style="border: none; padding: 0cm"><p>Strand</p>
+		</td>
+	</tr>
+	<tr>
+		<td style="border: none; padding: 0cm"><p>71</p>
+		</td>
+		<td style="border: none; padding: 0cm"><p>Coil</p>
+		</td>
+		<td style="border: none; padding: 0cm"><p>Strand</p>
+		</td>
+	</tr>
+</table>
+<pre style="margin-top: 0cm; margin-bottom: 0.79cm">Residues mostly align. Residues 71 to 76 comprising a coil on the tail end,do not align, as would be expected, owing to the placement of the coil and lack of structural constraints.</pre><h2 class="western" style="margin-top: 0cm; margin-bottom: 0.79cm">
+Clustering Bioemu Ensemble</h2>
+<pre style="margin-top: 0cm; margin-bottom: 0.79cm">Parameters:
+Select atoms of ‘all members’: yes
+Color ‘all members’: yes
+Choose ‘all members’ in Model Panel: yes
+File saved as ~/PDBs/2k39-clusters-of-all-atom-bioemu-samples/clustering-only-bioemu-samples-no-nmr-samples</pre><h2 class="western" style="margin-top: 0cm; margin-bottom: 0.79cm">
+PC Analysis, under the hood of library function</h2>
+<pre style="margin-top: 0cm; margin-bottom: 0.79cm"> Align all frames trajectory to the first. This step optional 
+Construct a 3Nx3N  covariance matrix for the N atoms in your trajectory. The covariance is, by default, to the average structure over the trajectory, although you can provide a mean to replace it.
+Diagonalize the covariance matrix. The eigenvectors are the principal components and the eigenvalues are the associated variance.
+Sort the eigenvalues in descending order, so that the principal components are ordered by variance</pre><h2 class="western" style="margin-top: 0cm; margin-bottom: 0.79cm">
+Molecular Dynamics analysis and Molecular Dynamics</h2>
+<pre style="margin-top: 0cm; margin-bottom: 0.79cm">[Viewing Shreya’s analysis of 2LUM. She’s doing PCA analysis.] It looks like PCA analysis is on motion and they are rendering trajectories along axis of maximum variance, or in other words, along axes where there’s been maximum motion.</pre><p>
+<strong>Current date:</strong> Wednesday, July 09, 2025, 9:42 AM IST</p>
+</body>
+</html>
