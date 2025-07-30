@@ -3,6 +3,24 @@ Ramachandran plot using command ramplot
 ========================================================
 This README documents the interpretation of ramplot output data
 
+
+## here's the problem
+Less than half the total residues across all samples had  angles calculated; Does this have to do with disallowed conformations; less than 3 percent of the residues were disallowed; the issue it is only recognizing 5912, when the total number of residues would be 194 * 74 = 14356; It is not that the ones it is recognizing are allowed, it has disallowed residues within the 5k odd residues it recognizes; the issue is that not all residues are being recognized; It looks the residues that are not recognized correspond to the residues for whom errors were thrown in the log file; example: “Error : Unable to calculate  torsion angles sample_33-fixed.pdb ChainA Residue 1 MET PHI:None PSI:128.19322269854987 Omega:None “; This suggests that more than half of the residues across all 194 conformations generated, are not feasible in the way they are generated; Is there a decisive test for this; is it possible that the software  is in the wrong here; 
+
+
+## Analysis csv file 
+    
+    #### reference: https://www.ramplot.in/manual.php 
+    
+    1) Why does the analysis file have random residues from random samples with their phi-psi dihedral angle pairs
+    2) Why does the file only has 245 pairs of phi and psi angles in both the attempts 
+    3) Within the 5942 residues
+        90.458% are favoured
+        6.681% are allowed
+        2.861% are disallowed
+
+
+## Ramachandran plots
 [x] there are 2d and 3d plots; the extra dimension in the 3d plot is frequency; what is frequency in this context? It is the frequency of the amino acid residue 
 [x] there are 6 different ramachandran plots; preProline, cisPronline, transProline, Glycine, Valine-Isoleucine, and General;
 [x] the pre in preProline is indicative spacially and not temporally; with nitrogen as the start terminal, ~~the residues before proline are distinct in their backbone angles, flexibility etc, since proline has a special structure: it has a ring structure that makes it unflexible, affecting perhaps the omega angle with the preceding residue;~~ proline is constrained due since its ring structure is with part of the backbone; this makes its presence on the plot deterministic, while other residues caught there due to other reasons; since preproline single handedly causes the rigidity, it is helpful to separate out these as their own data points to get a better look at the rest of the residues in that spot; if the preproline residue has weird angles, then it will show more prominently in the combined ramachandran plot since it is the only residue with those angles; not really; there are other residues that could have the same anlges, except for different reasons and we would want to nail down all the reasons that contribute to the structure of the protein; now, knowing preproline residue angles' reason to be those specific angles is helpful, but that is something already established, we are trying to look at the reasons for the rest of the residues geometry taking on the values they do;
@@ -24,7 +42,7 @@ This README documents the interpretation of ramplot output data
         [x] omega is the dihedral angle about the C-N bond; it is usually 180 degrees, but it would be very different for proline for example; for trans proline which is more common, it is close to 180 degrees like for most other amino acids, cis or trans, but for cis proline, it is around 0 degrees;
 
 
-
+# angles and their significance in determining structure
 
 d[] dont optimize before you standardize; standardize, then optimize; defining a relation: precedence of operation in the 'ought to' sense; a R b here would be a takes precedence over b in order of operation where order is defined temporally such that if a < b then a is done before b;  
 

@@ -11,10 +11,10 @@ def combine_pdb_samples_to_trajectory(input_folder):
     ms = PDB.Structure.Structure("multi_model")
     parser = PDB.PDBParser(QUIET=True)
 
-    file_list = sorted(glob.glob(os.path.join(input_folder, "sample_*-fixed.pdb")))
+    file_list = sorted(glob.glob(os.path.join(input_folder, "*.pdb")))
 
     if not file_list:
-        raise FileNotFoundError(f"No files matching 'sample_*-fixed.pdb' found in {input_folder}")
+        raise FileNotFoundError(f"No PDB files found in {input_folder}")
 
     for model_num, filename in enumerate(file_list, 1):
         model = parser.get_structure("temp", filename)[0]
