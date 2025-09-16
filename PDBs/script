@@ -1,0 +1,1 @@
+gmx chi -s topology-1200-odd-atoms.pdb -f visualization-1200-odd-atoms/combined-samples-trajectory.pdb -o dihedrals-1200-odd-atoms-2k39.xvg

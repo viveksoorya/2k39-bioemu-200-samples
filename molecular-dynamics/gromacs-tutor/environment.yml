@@ -1,0 +1,17 @@
+name: gromacs-tutorials
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - gromacs=2024.3=nompi*
+  - matplotlib
+  - nglview=3.1.1
+  - mdtraj
+  - notebook
+  - numpy
+  - requests
+  - pandas
+  - seaborn
+  - compilers
+  - openmpi
+  - cmake

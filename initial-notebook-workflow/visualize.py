@@ -1,3 +1,8 @@
+"""
+code reference: https://william-dawson.github.io/using-py3dmol.html
+"""
+
+
 # code borrowed from MDA_EROS_22Mar25.ipynb and slightly modified for use; credit for mentioned python notebook : Prof Kalyan Chakrabarti
 def visualize_mda_universe(u, output_dir='../bioemu-project/',
     sel_string='not ((resname WAT) or (resname HOH))', 
