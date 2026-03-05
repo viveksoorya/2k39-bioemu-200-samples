@@ -1,6 +1,6 @@
 # 2K39 BioEmu 200 Samples
 
-This repository contains 200 protein structure samples generated using BioEmu's diffusion-based protein structure emulator, along with analysis and molecular dynamics workflows. The work was completed during an internship at BioEmu under the supervision of Dr. Alex X. Lu.
+This repository contains 200 protein structure samples generated using BioEmu's diffusion-based protein structure emulator, along with analysis and molecular dynamics workflows. The work was completed during an internship at BioEmu under the supervision of Dr. Kalyan Chakrabarti (Krea University) and Dr. Sudip Roy (Krea University).
 
 ## Overview
 
@@ -139,7 +139,7 @@ Pre-generated visualizations are available in the `exports/` directory:
 
 **Vivek Soorya Maadoori**  
 Intern, BioEmu  
-Under the supervision of Dr. Alex X. Lu
+Under the supervision of Dr. Kalyan Chakrabarti (Krea University) and Dr. Sudip Roy (Krea University).
 
 ## License
 
